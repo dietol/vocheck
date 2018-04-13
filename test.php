@@ -21,4 +21,5 @@ if ($_SESSION["login"] != 1)
 }
 
 echo "User is logged in"
+
 ?>
