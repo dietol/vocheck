@@ -20,6 +20,6 @@ if ($_SESSION["login"] != 1)
     exit;
 }
 
-echo "User is logged in"
+include("logout-formular.html");
 
 ?>
