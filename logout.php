@@ -1,5 +1,6 @@
 <?php
 
+$_SESSION["login"] = 0;
 $_SESSION = array();
 SESSION_DESTROY();
 
