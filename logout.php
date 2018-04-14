@@ -1,6 +1,8 @@
 <?php
 
 $_SESSION["login"] = 0;
-session_destroy();
+SESSION_DESTROY();
+
+echo "You logged out!";
 
 include("login-formular.html");
