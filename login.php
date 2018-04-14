@@ -56,7 +56,7 @@ if (!empty($_POST["submit-login"])) {
 }
 
 // Check if user is logged in
-if ($_SESSION["login"] != 1) {
+if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     // User is not logged in -> show login and exit
     include("login-formular.html");
     mysqli_close($conn);
