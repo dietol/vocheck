@@ -63,6 +63,7 @@ if (!empty($_POST["submit-login"])) {
 // Check if user is logged in
 echo isset($_SESSION["login"]);
 echo $_SESSION["login"];
+echo "test";
 if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     echo "i am in";
     // User is not logged in -> show login and exit
