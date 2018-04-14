@@ -36,7 +36,7 @@ if (!empty($_POST["submit-login"])) {
     // If #rows = 0 -> credentials incorrect
     // If #rows = 1 -> credentials correct
     if ($_rows > 0) {
-        echo "Login successful.<br>";
+        //echo "Login successful.<br>";
 
         // User is logged in
         $_SESSION["login"] = 1;
