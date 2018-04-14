@@ -1,8 +1,8 @@
 <?php
 
 $_SESSION["login"] = 0;
-$_SESSION = array();
-SESSION_DESTROY();
+//$_SESSION = array();
+//SESSION_DESTROY();
 
 // echo "You logged out!";
 echo isset($_SESSION["login"]);
