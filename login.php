@@ -13,12 +13,9 @@ $conn = mysqli_connect($_db_host, $_db_username, $_db_password, $_db_database);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully";
-
 
 // Login-button pressed -> check login data
-if (!empty($_POST["submit-login"]))
-{
+if (!empty($_POST["submit-login"])) {
     // Escape username and password against SQL Injections
     $_username = mysqli_real_escape_string($conn, $_POST["username"]);
     $_password = mysqli_real_escape_string($conn, $_POST["password"]);
@@ -38,8 +35,7 @@ if (!empty($_POST["submit-login"]))
     // Check number of solutions
     // If #rows = 0 -> credentials incorrect
     // If #rows = 1 -> credentials correct
-    if ($_rows > 0)
-    {
+    if ($_rows > 0) {
         echo "Login successful.<br>";
 
         // User is logged in
@@ -53,17 +49,14 @@ if (!empty($_POST["submit-login"]))
                      WHERE id=".$_SESSION["user"]["id"];
         mysqli_query($conn, $_sql);
     }
-    else
-    {
+    else {
         echo "Login not successful.<br>";
         $_SESSION["login"] = 0;
     }
 }
-echo "Login value = " . $_SESSION["login"];
 
 // Check if user is logged in
-if ($_SESSION["login"] == 0)
-{
+if ($_SESSION["login"] == 0) {
     // User is not logged in -> show login and exit
     include("login-formular.html");
     mysqli_close($conn);
