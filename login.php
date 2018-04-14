@@ -16,14 +16,10 @@ if (!$conn) {
 
 // Login-button pressed -> check login data
 if (!empty($_POST["submit-login"])) {
-    echo "I am here 1";
+
     // Escape username and password against SQL Injections
     $_username = mysqli_real_escape_string($conn, $_POST["username"]);
     $_password = mysqli_real_escape_string($conn, $_POST["password"]);
-
-    echo "I am here 2";
-    echo $_username;
-    echo $_password;
 
     $_sql = "SELECT * FROM fe_users WHERE 
                     username='$_username' AND 
@@ -41,7 +37,7 @@ if (!empty($_POST["submit-login"])) {
     // If #rows = 0 -> credentials incorrect
     // If #rows = 1 -> credentials correct
     if ($_rows > 0) {
-        echo "Login successful.<br>";
+        //echo "Login successful.<br>";
 
         // User is logged in
         $_SESSION["login"] = 1;
@@ -61,11 +57,7 @@ if (!empty($_POST["submit-login"])) {
 }
 
 // Check if user is logged in
-echo isset($_SESSION["login"]);
-echo $_SESSION["login"];
-echo "test";
 if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
-    echo "i am in";
     // User is not logged in -> show login and exit
     include("login-formular.html");
     mysqli_close($conn);
@@ -77,4 +69,3 @@ include("logout-formular.html");
 
 // Close Database
 mysqli_close($conn);
-?>
