@@ -56,6 +56,7 @@ if (!empty($_POST["submit-login"]))
     else
     {
         echo "Login not successful.<br>";
+        $_SESSION["login"] = 0;
     }
 }
 echo "Login value = " . $_SESSION["login"];
