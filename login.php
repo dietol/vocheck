@@ -58,6 +58,7 @@ if (!empty($_POST["submit-login"]))
         echo "Login not successful.<br>";
     }
 }
+echo "Login value = " . $_SESSION["login"];
 
 // Check if user is logged in
 if ($_SESSION["login"] == 0)
