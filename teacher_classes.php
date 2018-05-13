@@ -37,9 +37,11 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <form method="POST" action="logout.php">
-                <input type=submit name=submit-logout class="btn btn-outline-light" value="Logout">
-            </form>
+            <li>
+                <form method="POST" action="logout.php">
+                    <input type=submit name=submit-logout class="btn btn-outline-light" value="Logout">
+                </form>
+            </li>
         </ul>
     </div>
 </nav>
