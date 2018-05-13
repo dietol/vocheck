@@ -7,14 +7,6 @@ $_db_password = "***REMOVED***";
 
 SESSION_START();
 
-function debug_to_console( $data ) {
-    $output = $data;
-    if ( is_array( $output ) )
-        $output = implode( ',', $output);
-
-    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
-}
-
 // Create connection
 $conn = mysqli_connect($_db_host, $_db_username, $_db_password, $_db_database);
 
@@ -30,11 +22,11 @@ if (!empty($_POST["submit-login"])) {
     $_username = mysqli_real_escape_string($conn, $_POST["username"]);
     $_password = mysqli_real_escape_string($conn, $_POST["password"]);
 
-    debug_to_console("Test");
+    $_pw_hash =  hash ( "sha256" , $_password);
 
     $_sql = "SELECT * FROM fe_users WHERE 
                     username='$_username' AND 
-                    password='$_password' AND 
+                    password='$_pw_hash' AND 
                     deleted=0 
                 LIMIT 1";
 
@@ -70,17 +62,11 @@ if (!empty($_POST["submit-login"])) {
 // Check if user is logged in
 if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     // User is not logged in -> show login and exit
-    ?>
-    <h1>Test</h1>
-    <?php
     include("login-page.php");
     mysqli_close($conn);
     exit;
 }
 
-?>
-    <h1>Test2</h1>
-<?php
 // User is logged in successfully
 include("logout-page.php");
 
