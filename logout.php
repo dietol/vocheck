@@ -7,4 +7,4 @@ SESSION_DESTROY();
 
 // echo "You logged out!";
 
-include("pages/login-page.php");
+include("login-page.php");

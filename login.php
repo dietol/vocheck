@@ -1,12 +1,9 @@
 <?php
-$_db_host = "localhost";
+//$_db_host = "localhost";
+$_db_host = "***REMOVED***";
 $_db_database = "***REMOVED***";
 $_db_username = "u01_***REMOVED***";
 $_db_password = "***REMOVED***";
-//$_db_host = "***REMOVED***";
-//$_db_database = "***REMOVED***";
-//$_db_username = "u02_***REMOVED***";
-//$_db_password = "Tannen34Baum:";
 
 SESSION_START();
 
@@ -73,13 +70,19 @@ if (!empty($_POST["submit-login"])) {
 // Check if user is logged in
 if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     // User is not logged in -> show login and exit
-    include("pages/login-page.php");
+    ?>
+    <h1>Test</h1>
+    <?php
+    include("login-page.php");
     mysqli_close($conn);
     exit;
 }
 
+?>
+    <h1>Test2</h1>
+<?php
 // User is logged in successfully
-include("pages/logout-page.php");
+include("logout-page.php");
 
 // Close Database
 mysqli_close($conn);
