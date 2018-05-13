@@ -1,3 +1,7 @@
+<?php
+include('check_teacherlogin.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

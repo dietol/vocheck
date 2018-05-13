@@ -1,7 +1,3 @@
-<?php
-include('check_teacherlogin.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,26 +21,13 @@ include('check_teacherlogin.php');
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="teacher_home.php">Home</a>
+                <a class="nav-link" href=".">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="teacher_vControl.php">vocheck Control</a>
+                <a class="nav-link" href="about.php">About vocheck</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="teacher_vocabulary.php">Vocabulary</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="teacher_classes.php">Classes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="teacher_settings.php">Settings</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li>
-                <form method="POST" action="logout.php">
-                    <input type=submit name=submit-logout class="btn btn-outline-light" value="Logout">
-                </form>
+                <a class="nav-link" href="contact.php">Contact</a>
             </li>
         </ul>
     </div>
@@ -53,8 +36,9 @@ include('check_teacherlogin.php');
 <div class="row">
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
         <h1>vocheck</h1>
-        <h2>Your teacher Account - Home</h2>
+        <h2>The new vocabulary checking tool for teachers and pupils</h2>
 
+        <p>There was an error. This side is not available!</p>
     </div>
 </div>
 
