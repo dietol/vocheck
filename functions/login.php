@@ -59,13 +59,13 @@ if (!empty($_POST["submit-login"])) {
 // Check if user is logged in
 if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     // User is not logged in -> show login and exit
-    include("login-formular.html");
+    include("../pages/login-page.php");
     mysqli_close($conn);
     exit;
 }
 
 // User is logged in successfully
-include("logout-formular.html");
+include("../pages/logout-page.php");
 
 // Close Database
 mysqli_close($conn);
