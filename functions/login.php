@@ -3,8 +3,20 @@ $_db_host = "localhost";
 $_db_database = "***REMOVED***";
 $_db_username = "u01_***REMOVED***";
 $_db_password = "***REMOVED***";
+//$_db_host = "***REMOVED***";
+//$_db_database = "***REMOVED***";
+//$_db_username = "u02_***REMOVED***";
+//$_db_password = "Tannen34Baum:";
 
 SESSION_START();
+
+function debug_to_console( $data ) {
+    $output = $data;
+    if ( is_array( $output ) )
+        $output = implode( ',', $output);
+
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+}
 
 // Create connection
 $conn = mysqli_connect($_db_host, $_db_username, $_db_password, $_db_database);
@@ -20,6 +32,8 @@ if (!empty($_POST["submit-login"])) {
     // Escape username and password against SQL Injections
     $_username = mysqli_real_escape_string($conn, $_POST["username"]);
     $_password = mysqli_real_escape_string($conn, $_POST["password"]);
+
+    debug_to_console("Test");
 
     $_sql = "SELECT * FROM fe_users WHERE 
                     username='$_username' AND 
