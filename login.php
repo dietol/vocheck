@@ -48,6 +48,9 @@ if (!empty($_POST["submit-login"])) {
         // Save user data in Session
         $_SESSION["user"] = mysqli_fetch_array($_res, MYSQLI_ASSOC);
 
+        // save account type
+        $_SESSION["account_type"] = $_SESSION["user"]["account_type"];
+
         // Update last login data
         $_sql = "UPDATE fe_users SET last_login=NOW() 
                      WHERE id=".$_SESSION["user"]["id"];
@@ -67,8 +70,17 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     exit;
 }
 
-// User is logged in successfully
-include("logout-page.php");
+// Decide if teacher or student
+if ($_SESSION["account_type"] == 1) {
+    // teacher
+    include("teacher_home.php");
+} else if ($_SESSION["user"]["account_type"] == 2) {
+    //student
+    include("student_home.php");
+} else {
+    // not valid
+    include("login-page.php");
+}
 
 // Close Database
 mysqli_close($conn);
