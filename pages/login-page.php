@@ -5,7 +5,7 @@
     <title>vocheck</title>
 
     <?php
-    include('../static/head-imports.html');
+    include('static/head-imports.html');
     ?>
 
 </head>
