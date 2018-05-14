@@ -30,6 +30,13 @@
                 <a class="nav-link" href="contact.php">Contact</a>
             </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+            <li>
+                <form method="POST" action="register.php">
+                    <input type=submit name=submit-register class="btn btn-outline-light" value="Register">
+                </form>
+            </li>
+        </ul>
     </div>
 </nav>
 
