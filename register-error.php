@@ -40,6 +40,10 @@
         <h2>Register</h2>
 
         <p>Sorry, the username is taken already. Try again!</p>
+
+        <form method="POST" action="register.php">
+            <input type="submit" name="submit-register" class="btn btn-primary" value="Go back">
+        </form>
     </div>
 </div>
 
