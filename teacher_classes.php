@@ -1,5 +1,24 @@
 <?php
 include('check_teacherlogin.php');
+include('static/connect-database.php');
+
+$_sql = "SELECT temp.name AS a, languages.name AS b, temp.sl AS c FROM (SELECT classes.name AS name, classes.first_language AS fl, languages.name AS sl FROM classes LEFT JOIN languages ON classes.second_language = languages.id) AS temp LEFT JOIN languages ON temp.fl = languages.id";
+if (!$_res = mysqli_query($conn, $_sql)) {
+    echo "Error: %s\n" . mysqli_sqlstate($conn);
+}
+
+$_classes_str = "";
+
+if (mysqli_num_rows($_res) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($_res)) {
+        $_classes_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\">{$row["a"]}<span><span class=\"mr-5\">{$row["b"]} - {$row["c"]}</span><i class=\"fas fa-pencil-alt mr-3\"></i><i class=\"fas fa-plus mr-3\"></i><i class=\"fas fa-trash-alt\"></i></span></li>";
+    }
+} else {
+    $_language_str = "Error";
+}
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -54,12 +73,22 @@ include('check_teacherlogin.php');
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
         <h1>vocheck</h1>
         <h2>Your teacher Account - Classes</h2>
-
-        <form method="POST" action="teacher_classes_new.php">
-            <input type="submit" class="btn btn-primary" value="Create Class"/>
-        </form>
-
-
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+        <div class="text-right">
+            <form method="POST" action="teacher_classes_new.php">
+                <input type="submit" class="btn btn-dark" value="Create Class"/>
+            </form>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <ul class="list-group">
+                    <?php echo $_classes_str;?>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
