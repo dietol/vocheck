@@ -52,6 +52,7 @@ include('check_studentlogin.php');
         <h1>vocheck</h1>
         <h2>Your student Account - Home</h2>
 
+        <p>Hello <?php echo $_SESSION["user"]["firstname"];?>!</p>
     </div>
 </div>
 

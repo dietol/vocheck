@@ -55,6 +55,7 @@ include('check_teacherlogin.php');
         <h1>vocheck</h1>
         <h2>Your teacher Account - Home</h2>
 
+        <p>Hello <?php echo $_SESSION["user"]["firstname"];?>!</p>
     </div>
 </div>
 
