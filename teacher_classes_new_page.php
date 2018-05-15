@@ -82,6 +82,11 @@ include('check_teacherlogin.php');
                 <input type="submit" name="classes_new_submit" class="btn btn-primary" value="Create Class">
             </div>
         </form>
+        <form method="POST" action="teacher_classes.php">
+            <div class="form-group text-center">
+                <input type="submit" name="classes_cancel" class="btn btn-secondary" value="Cancel">
+            </div>
+        </form>
     </div>
 </div>
 
