@@ -58,11 +58,11 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
 
 // Decide if teacher or student
 if ($_SESSION["account_type"] == 1) {
+    // student
+    include("student_home.php");
+} else if ($_SESSION["account_type"] == 2) {
     // teacher
     include("teacher_home.php");
-} else if ($_SESSION["user"]["account_type"] == 2) {
-    //student
-    include("student_home.php");
 } else {
     // not valid
     include("login-page.php");

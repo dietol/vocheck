@@ -9,7 +9,7 @@ if (!isset($_SESSION["login"]) || $_SESSION["login"] != 1) {
     exit;
 }
 
-if (!isset($_SESSION["account_type"]) || $_SESSION["account_type"] != 2) {
+if (!isset($_SESSION["account_type"]) || $_SESSION["account_type"] != 1) {
     // User is not student -> show error and exit
     include("error.php");
     exit;
