@@ -67,7 +67,7 @@
             </div>
             <div class="form-group">
                 <label for="register_form_type">Account Type</label>
-                <select class="form-control" id="register_form_type" name="register_form_type" required>
+                <select class="form-control" id="register_form_type" name="register_form_type">
                     <option value="1">Student</option>
                     <option value="2">Teacher</option>
                 </select>
