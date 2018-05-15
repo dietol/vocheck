@@ -1,59 +1,156 @@
 <?php
 include('check_studentlogin.php');
-?>
+include ("static/connect-database.php");
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>vocheck</title>
+$_username = $_SESSION["user"]["username"];
 
-    <?php
-    include('static/head-imports.html');
-    ?>
+// Settings SaveChanges-button pressed -> Check and save Changes
+if (!empty($_POST["submit-settingsS-save"])) {
 
-</head>
-<body>
+    // Escape data against SQL Injections
+    $_settings_firstname = mysqli_real_escape_string($conn, $_POST["settingsS_form_firstname"]);
+    $_settings_lastname = mysqli_real_escape_string($conn, $_POST["settingsS_form_lastname"]);
+    $_settings_email = mysqli_real_escape_string($conn, $_POST["settingsS_form_email"]);
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="student_home.php">vocheck</a>
+    $_settings_email = strtolower($_settings_email);
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    $_sql = "SELECT * FROM fe_users WHERE 
+                    username='$_username' AND 
+                    deleted=0 
+                LIMIT 1";
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="student_home.php">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="student_vocheck.php">Let's vocheck</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="student_statistics.php">Statistics</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="student_settings.php">Settings</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li>
-                <form method="POST" action="logout.php">
-                    <input type=submit name=submit-logout class="btn btn-outline-light" value="Logout">
-                </form>
-            </li>
-        </ul>
-    </div>
-</nav>
+    // Check if user exists in database
+    if (!$_res = mysqli_query($conn, $_sql)) {
+        echo "Error: %s\n" . mysqli_sqlstate($conn);
+    }
+    $_rows = mysqli_num_rows($_res);
 
-<div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <h1>vocheck</h1>
-        <h2>Your student Account - Settings</h2>
+    // Check number of solutions
+    // If #rows = 1 -> user is in db
+    // If #rows = 0 -> user is not in db -> fatal error
+    if ($_rows == 1) {
 
-    </div>
-</div>
+        // Update user data
+        $_sql = "UPDATE fe_users SET firstname='{$_settings_firstname}', lastname='{$_settings_lastname}', email='{$_settings_email}' WHERE username='{$_username}'";
 
-</body>
-</html>
+        if (!mysqli_query($conn, $_sql)) {
+            echo "Error: " . $_sql . "<br>" . mysqli_error($conn);
+            exit;
+        }
+
+        // Update Session variable
+        $_sql = "SELECT * FROM fe_users WHERE username='$_username' AND deleted=0 LIMIT 1";
+        if (!$_res = mysqli_query($conn, $_sql)) {
+            echo "Error: %s\n" . mysqli_sqlstate($conn);
+        }
+        $_SESSION["user"] = mysqli_fetch_array($_res, MYSQLI_ASSOC);
+    }
+    else {
+        echo "Error: Update entry was not possible. Inconsistent data.";
+        // Close Database
+        mysqli_close($conn);
+        exit;
+    }
+}
+
+if (!empty($_POST["submit-settingsS-save-password"])) {
+
+    // Escape data against SQL Injections
+    $_settingsS_password_enter = mysqli_real_escape_string($conn, $_POST["settingsS_form_password_enter"]);
+    $_settingsS_password_reenter = mysqli_real_escape_string($conn, $_POST["settingsS_form_password_reenter"]);
+
+    if ($_settingsS_password_enter != $_settingsS_password_reenter) {
+        echo "Error: Passwords are not equal!";
+        exit;
+    }
+
+    $_settingsS_pw_hash =  hash ( "sha256" , $_settingsS_password_enter);
+
+    $_sql = "SELECT * FROM fe_users WHERE 
+                    username='$_username' AND 
+                    deleted=0 
+                LIMIT 1";
+
+    // Check if user exists in database
+    if (!$_res = mysqli_query($conn, $_sql)) {
+        echo "Error: %s\n" . mysqli_sqlstate($conn);
+    }
+    $_rows = mysqli_num_rows($_res);
+
+    // Check number of solutions
+    // If #rows = 1 -> user is in db
+    // If #rows = 0 -> user is not in db -> fatal error
+    if ($_rows == 1) {
+
+        // Update password
+        $_sql = "UPDATE fe_users SET password='{$_settingsS_pw_hash}' WHERE username='{$_username}'";
+
+        if (!mysqli_query($conn, $_sql)) {
+            echo "Error: " . $_sql . "<br>" . mysqli_error($conn);
+            exit;
+        }
+
+        // Update Session variable
+        $_sql = "SELECT * FROM fe_users WHERE username='$_username' AND deleted=0 LIMIT 1";
+        if (!$_res = mysqli_query($conn, $_sql)) {
+            echo "Error: %s\n" . mysqli_sqlstate($conn);
+        }
+        $_SESSION["user"] = mysqli_fetch_array($_res, MYSQLI_ASSOC);
+    }
+    else {
+        echo "Error: Update entry was not possible. Inconsistent data.";
+        // Close Database
+        mysqli_close($conn);
+        exit;
+    }
+}
+
+if (!empty($_POST["submit-settingsS-delete"])) {
+
+    $_sql = "SELECT * FROM fe_users WHERE 
+                    username='$_username' AND 
+                    deleted=0 
+                LIMIT 1";
+
+    // Check if user exists in database
+    if (!$_res = mysqli_query($conn, $_sql)) {
+        echo "Error: %s\n" . mysqli_sqlstate($conn);
+    }
+    $_rows = mysqli_num_rows($_res);
+
+    // Check number of solutions
+    // If #rows = 1 -> user is in db
+    // If #rows = 0 -> user is not in db -> fatal error
+    if ($_rows == 1) {
+
+        // Delete user with deleted=1
+        $_sql = "UPDATE fe_users SET deleted=1 WHERE username='{$_username}'";
+
+        if (!mysqli_query($conn, $_sql)) {
+            echo "Error: " . $_sql . "<br>" . mysqli_error($conn);
+            exit;
+        }
+
+        // Close Database
+        mysqli_close($conn);
+
+        $_SESSION = array();
+        SESSION_DESTROY();
+
+        include("account-deleted.php");
+        exit;
+    }
+    else {
+        echo "Error: Delete Account was not possible. Inconsistent data.";
+        // Close Database
+        mysqli_close($conn);
+        exit;
+    }
+}
+
+// no button was pressed. So just show current user information
+
+include("student_settings_page.php");
+
+// Close Database
+mysqli_close($conn);
