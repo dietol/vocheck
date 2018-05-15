@@ -5,7 +5,7 @@ include ("static/connect-database.php");
 // Register-button pressed -> create account
 if (!empty($_POST["submit-register-account"])) {
 
-    // Escape username and password against SQL Injections
+    // Escape data against SQL Injections
     $_register_firstname = mysqli_real_escape_string($conn, $_POST["register_form_firstname"]);
     $_register_lastname = mysqli_real_escape_string($conn, $_POST["register_form_lastname"]);
     $_register_username = mysqli_real_escape_string($conn, $_POST["register_form_username"]);
@@ -39,7 +39,7 @@ if (!empty($_POST["submit-register-account"])) {
             exit;
         }
 
-        // Update last login data
+        // Insert user in db
         $_sql = "INSERT INTO fe_users (firstname, lastname, username, password, email, account_type) VALUES ('{$_register_firstname}', '{$_register_lastname}', '{$_register_username}', '{$_register_pw_hash}', '{$_register_email}', '{$_register_type}')";
 
         if (!mysqli_query($conn, $_sql)) {
