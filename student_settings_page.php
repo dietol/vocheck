@@ -116,12 +116,33 @@ include('check_studentlogin.php');
         <h3>Delete Account</h3>
         <div class="card border-danger">
             <div class="card-header">Danger zone</div>
-            <form class="card-body text-danger" method="POST" action="teacher_settings.php">
+            <div class="card-body text-danger">
                 <h5 class="card-title">Delete your User account</h5>
-                <div class="form-group text-center mt-4">
-                    <input type="submit" name="submit-settingsS-delete" class="btn btn-danger" value="Delete Account">
+                <div class="text-center mt-4">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#accountDeleteModal">Delete Account</button>
                 </div>
-            </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="accountDeleteModal" tabindex="-1" role="dialog" aria-labelledby="accountDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Deleting Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your user account? All data will be lost.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form method="POST" action="student_settings.php">
+                    <input type="submit" name="submit-settingsS-delete" class="btn btn-danger" value="Delete Account">
+                </form>
+            </div>
         </div>
     </div>
 </div>
