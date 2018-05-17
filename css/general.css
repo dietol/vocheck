@@ -1,3 +1,14 @@
 body {
-    background: #edf8fc;
+    /*background: #edf8fc*/
+    background: #effafc;
+}
+
+/*
+Classes
+ */
+
+.class-edit,
+.class-duplicate,
+.class-delete {
+    cursor: pointer;
 }
