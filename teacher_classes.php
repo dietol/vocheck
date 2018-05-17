@@ -2,7 +2,7 @@
 include('check_teacherlogin.php');
 include('static/connect-database.php');
 
-$_sql = "SELECT temp.id AS d, temp.name AS a, languages.name AS b, temp.sl AS c FROM (SELECT classes.id AS id, classes.name AS name, classes.first_language AS fl, languages.name AS sl FROM classes LEFT JOIN languages ON classes.second_language = languages.id WHERE classes.deleted = 0) AS temp LEFT JOIN languages ON temp.fl = languages.id";
+$_sql = "SELECT temp.id AS d, temp.name AS a, languages.name AS b, temp.sl AS c FROM (SELECT classes.id AS id, classes.name AS name, classes.first_language AS fl, languages.name AS sl FROM classes LEFT JOIN languages ON classes.second_language = languages.id WHERE classes.deleted = 0 AND classes.teacher = {$_SESSION["user"]["id"]}) AS temp LEFT JOIN languages ON temp.fl = languages.id";
 if (!$_res = mysqli_query($conn, $_sql)) {
     echo "Error: %s\n" . mysqli_sqlstate($conn);
 }
