@@ -15,6 +15,7 @@ $( document ).ready(function() {
 
     $('.class-edit').on( "click", function() {
         var classid = $(this).parent().parent().attr('id');
+        classid = classid.split("-")[1];
         $.ajax({
             method: 'POST',
             url: 'teacher_classes_edit.php',

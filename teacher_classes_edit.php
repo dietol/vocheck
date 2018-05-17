@@ -26,8 +26,7 @@ if (!isset($_POST['op']) || !isset($_POST['id'])) {
 
 switch ($_POST["op"]) {
     case "edit":
-        $_class = explode("-", $_POST["id"]);
-        $_sql = "SELECT id, name, first_language, second_language FROM classes WHERE deleted=0 AND teacher={$_SESSION["user"]["id"]} AND id={$_class[1]}";
+        $_sql = "SELECT id, name, first_language, second_language FROM classes WHERE deleted=0 AND teacher={$_SESSION["user"]["id"]} AND id={$_POST["id"]}";
 
         if (!$_res = mysqli_query($conn, $_sql)) {
             echo "Error: %s\n" . mysqli_sqlstate($conn);
