@@ -1,24 +1,5 @@
 <?php
 include('check_teacherlogin.php');
-include('static/connect-database.php');
-
-$_sql = "SELECT temp.id AS d, temp.name AS a, languages.name AS b, temp.sl AS c FROM (SELECT classes.id AS id, classes.name AS name, classes.first_language AS fl, languages.name AS sl FROM classes LEFT JOIN languages ON classes.second_language = languages.id WHERE classes.deleted = 0 AND classes.teacher = {$_SESSION["user"]["id"]}) AS temp LEFT JOIN languages ON temp.fl = languages.id";
-if (!$_res = mysqli_query($conn, $_sql)) {
-    echo "Error: %s\n" . mysqli_sqlstate($conn);
-}
-
-$_classes_str = "";
-
-if (mysqli_num_rows($_res) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($_res)) {
-        $_classes_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"class-{$row["d"]}\"><a href='toClassDetails'>{$row["a"]}</a><span><span class=\"mr-5\">{$row["b"]} - {$row["c"]}</span><i class=\"fas fa-pencil-alt mr-3 class-edit\"></i><i class=\"fas fa-trash-alt class-delete\"></i></span></li>";
-    }
-} else {
-    $_classes_str = "Error";
-}
-
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +53,7 @@ mysqli_close($conn);
 <div class="row">
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
         <h1>vocheck</h1>
-        <h2>Your teacher Account - Classes</h2>
+        <h2>Your teacher Account - Students in </h2>
     </div>
 </div>
 <div class="row mt-4">
@@ -85,7 +66,7 @@ mysqli_close($conn);
         <div class="card mt-4">
             <div class="card-body">
                 <ul class="list-group">
-                    <?php echo $_classes_str;?>
+                    <?php echo $_students_str;?>
                 </ul>
             </div>
         </div>

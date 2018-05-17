@@ -25,5 +25,18 @@ $( document ).ready(function() {
         });
     });
 
+    $('a[href="toClassDetails"]').on( "click", function(e) {
+        e.preventDefault();
+        var classid = $(this).parent().attr('id');
+        classid = classid.split("-")[1];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_classes_detail.php',
+            data: {op: "show", classid: classid}
+        }).done(function( msg ) {
+            document.write(msg);
+        });
+    });
+
 });
 
