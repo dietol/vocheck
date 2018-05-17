@@ -3,14 +3,14 @@ include('check_teacherlogin.php');
 include('static/connect-database.php');
 
 // Edit or Delete Class
-if (!isset($_POST['op']) || !isset($_POST['classid'])) {
+if (!isset($_POST['op']) || !isset($_POST['id'])) {
     echo "Error. Invalid Call.";
     exit;
 }
 
 switch ($_POST["op"]) {
     case "show":
-        $_sql = "SELECT fe_users.id AS studentid, fe_users.firstname AS fname, fe_users.lastname AS lname FROM fe_users JOIN user_classes ON fe_users.id = user_classes.student WHERE user_classes.deleted=0 AND fe_users.deleted=0 AND user_classes.class={$_POST["classid"]}";
+        $_sql = "SELECT fe_users.id AS studentid, fe_users.firstname AS fname, fe_users.lastname AS lname FROM fe_users JOIN user_classes ON fe_users.id = user_classes.student WHERE user_classes.deleted=0 AND fe_users.deleted=0 AND user_classes.class={$_POST["id"]}";
         if (!$_res = mysqli_query($conn, $_sql)) {
             echo "Error: %s\n" . mysqli_sqlstate($conn);
         }
@@ -34,7 +34,7 @@ switch ($_POST["op"]) {
     case "remove":
 
         // Remove student with deleted=1
-        $_sql = "UPDATE user_classes SET deleted=1 WHERE id='{$_POST["classid"]}'";
+        $_sql = "UPDATE user_classes SET deleted=1 WHERE student='{$_POST["id"]}'";
 
         if (!mysqli_query($conn, $_sql)) {
             echo "Error: " . $_sql . "<br>" . mysqli_error($conn);

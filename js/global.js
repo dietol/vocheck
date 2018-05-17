@@ -7,8 +7,9 @@ $( document ).ready(function() {
             method: 'POST',
             url: 'teacher_classes_edit.php',
             data: {op: "delete", id: classid}
+        }).done(function() {
+            location.reload();
         });
-        location.reload();
     });
 
     $('.class-edit').on( "click", function() {
@@ -20,6 +21,7 @@ $( document ).ready(function() {
             data: {op: "edit", id: classid}
         }).done(function( msg ) {
             document.write(msg);
+            document.close();
         });
     });
 
@@ -30,22 +32,23 @@ $( document ).ready(function() {
         $.ajax({
             method: 'POST',
             url: 'teacher_classes_detail.php',
-            data: {op: "show", classid: classid}
+            data: {op: "show", id: classid}
         }).done(function( msg ) {
             document.write(msg);
+            document.close();
         });
     });
 
     $('.student-delete').on( "click", function() {
-        alert('Hello');
         var studentid = $(this).parent().attr('id');
         studentid = studentid.split("-")[1];
         $.ajax({
             method: 'POST',
             url: 'teacher_classes_detail.php',
             data: {op: "remove", id: studentid}
+        }).done(function() {
+            location.reload();
         });
-        location.reload();
     });
 
 });
