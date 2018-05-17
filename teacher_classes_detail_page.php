@@ -59,8 +59,8 @@ include('check_teacherlogin.php');
 <div class="row mt-4">
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
         <div class="text-right">
-            <form method="POST" action="teacher_classes_new.php">
-                <input type="submit" class="btn btn-dark" value="Create Class"/>
+            <form method="POST" action="teacher_classes_detail.php">
+                <input type="submit" name=class-detail-add-student class="btn btn-dark" value="Add Student"/>
             </form>
         </div>
         <div class="card mt-4">

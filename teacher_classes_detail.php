@@ -23,7 +23,7 @@ switch ($_POST["op"]) {
                 $_students_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"student-{$row["studentid"]}\">{$row["lname"]}, {$row["fname"]}<i class=\"fas fa-trash-alt student-delete\"></i></li>";
             }
         } else {
-            $_students_str = "Error";
+            $_students_str = "No students in this class";
         }
 
         mysqli_close($conn);
@@ -32,6 +32,18 @@ switch ($_POST["op"]) {
 
         break;
     case "remove":
+
+        // Remove student with deleted=1
+        $_sql = "UPDATE user_classes SET deleted=1 WHERE id='{$_POST["classid"]}'";
+
+        if (!mysqli_query($conn, $_sql)) {
+            echo "Error: " . $_sql . "<br>" . mysqli_error($conn);
+            exit;
+        }
+
+        // Close Database
+        mysqli_close($conn);
+
         break;
     default:
         break;

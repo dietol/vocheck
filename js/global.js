@@ -7,8 +7,6 @@ $( document ).ready(function() {
             method: 'POST',
             url: 'teacher_classes_edit.php',
             data: {op: "delete", id: classid}
-        }).done(function( msg ) {
-            alert( "Data Get: " + msg );
         });
         location.reload();
     });
@@ -36,6 +34,18 @@ $( document ).ready(function() {
         }).done(function( msg ) {
             document.write(msg);
         });
+    });
+
+    $('.student-delete').on( "click", function() {
+        alert('Hello');
+        var studentid = $(this).parent().attr('id');
+        studentid = studentid.split("-")[1];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_classes_detail.php',
+            data: {op: "remove", id: studentid}
+        });
+        location.reload();
     });
 
 });

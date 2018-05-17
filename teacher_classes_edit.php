@@ -72,7 +72,6 @@ switch ($_POST["op"]) {
         break;
     case "delete":
         // Delete class with deleted=1
-        echo "delete";
         $_sql = "UPDATE classes SET deleted=1 WHERE id='{$_POST["id"]}'";
 
         if (!mysqli_query($conn, $_sql)) {
