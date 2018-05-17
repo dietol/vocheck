@@ -9,6 +9,8 @@ if (!empty($_POST["submit-login"])) {
     $_username = mysqli_real_escape_string($conn, $_POST["username"]);
     $_password = mysqli_real_escape_string($conn, $_POST["password"]);
 
+    $_username = strtolower($_username);
+
     $_pw_hash =  hash ( "sha256" , $_password);
 
     $_sql = "SELECT * FROM fe_users WHERE 
