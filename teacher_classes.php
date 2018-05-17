@@ -2,7 +2,7 @@
 include('check_teacherlogin.php');
 include('static/connect-database.php');
 
-$_sql = "SELECT temp.name AS a, languages.name AS b, temp.sl AS c FROM (SELECT classes.name AS name, classes.first_language AS fl, languages.name AS sl FROM classes LEFT JOIN languages ON classes.second_language = languages.id) AS temp LEFT JOIN languages ON temp.fl = languages.id";
+$_sql = "SELECT temp.id AS d, temp.name AS a, languages.name AS b, temp.sl AS c FROM (SELECT classes.id AS id, classes.name AS name, classes.first_language AS fl, languages.name AS sl FROM classes LEFT JOIN languages ON classes.second_language = languages.id WHERE classes.deleted = 0) AS temp LEFT JOIN languages ON temp.fl = languages.id";
 if (!$_res = mysqli_query($conn, $_sql)) {
     echo "Error: %s\n" . mysqli_sqlstate($conn);
 }
@@ -12,7 +12,7 @@ $_classes_str = "";
 if (mysqli_num_rows($_res) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($_res)) {
-        $_classes_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\">{$row["a"]}<span><span class=\"mr-5\">{$row["b"]} - {$row["c"]}</span><i class=\"fas fa-pencil-alt mr-3\"></i><i class=\"fas fa-plus mr-3\"></i><i class=\"fas fa-trash-alt\"></i></span></li>";
+        $_classes_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"class-{$row["d"]}\">{$row["a"]}<form method='POST' action='teacher_classes_new.php'><span class=\"mr-5\">{$row["b"]} - {$row["c"]}</span><button type='submit' class='btn btn-outline-dark mr-3'><i class=\"fas fa-pencil-alt class-edit\"></i></button><i class=\"fas fa-plus mr-3 class-duplicate\"></i><i class=\"fas fa-trash-alt class-delete\"></i></form></li>";
     }
 } else {
     $_language_str = "Error";
