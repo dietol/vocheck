@@ -13,11 +13,16 @@ $( document ).ready(function() {
         location.reload();
     });
 
-    $('.class-duplicate').on( "click", function() {
+    $('.class-edit').on( "click", function() {
         var classid = $(this).parent().parent().attr('id');
-        $('html').load("teacher_classes_edit_page.php", {
-            classid: "2"
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_classes_edit.php',
+            data: {op: "edit", id: classid}
+        }).done(function( msg ) {
+            document.write(msg);
         });
     });
 
 });
+

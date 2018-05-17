@@ -1,55 +1,5 @@
 <?php
 include('check_teacherlogin.php');
-echo $_POST["classid"];
-include('static/connect-database.php');
-
-
-
-//$_sql = "SELECT name, first_language, second_language FROM classes WHERE deleted=0 AND id={$_POST["classid"]} AND teacher={$_SESSION["user"]["id"]}";
-$_sql = "SELECT name, first_language, second_language FROM classes WHERE deleted=0 AND id={$_POST["classid"]}";
-
-if (!$_res = mysqli_query($conn, $_sql)) {
-    echo "Error: %s\n" . mysqli_sqlstate($conn);
-}
-
-if (mysqli_num_rows($_res) == 1) {
-    $_name = $_res["name"];
-    $_first_language = $_res["first_language"];
-    $_second_language = $_res["second_language"];
-} else {
-    echo "Error: No class found in DB";
-    exit;
-}
-
-$_sql = "SELECT * FROM languages";
-if (!$_res = mysqli_query($conn, $_sql)) {
-    echo "Error: %s\n" . mysqli_sqlstate($conn);
-}
-
-$_language_str_1 = "";
-$_language_str_2 = "";
-
-if (mysqli_num_rows($_res) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($_res)) {
-        if ($row["id"] == $_first_language) {
-            $_language_str_1 .= "<option value='{$row["id"]}' selected='selected'>{$row["name"]}</option>";
-        } else {
-            $_language_str_1 .= "<option value='{$row["id"]}'>{$row["name"]}</option>";
-        }
-        if ($row["id"] == $_second_language) {
-            $_language_str_2 .= "<option value='{$row["id"]}' selected='selected'>{$row["name"]}</option>";
-        } else {
-            $_language_str_2 .= "<option value='{$row["id"]}'>{$row["name"]}</option>";
-        }
-    }
-} else {
-    $_language_str_1 = "Error";
-    $_language_str_2 = "Error";
-}
-
-// Close Database
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -114,7 +64,7 @@ mysqli_close($conn);
             <div class="form-group">
                 <label for="classes_edit_name">Class name</label>
                 <input type="text" class="form-control" id="classes_edit_name" name="classes_edit_name"
-                       value="<?php echo $_name;?>" required>
+                       value="<?php echo $_entry["name"];?>" required>
             </div>
             <div class="form-group">
                 <label for="classes_edit_language_first">Mother Language</label>
@@ -128,8 +78,11 @@ mysqli_close($conn);
                     <?php echo $_language_str_2;?>
                 </select>
             </div>
+            <label for="classes_edit_id" hidden>Nothing</label>
+            <input type="text" class="form-control" id="classes_edit_id" name="classes_edit_id"
+                   value="<?php echo $_entry["id"];?>" hidden>
             <div class="form-group text-center">
-                <input type="submit" name="classes_edit_submit" class="btn btn-primary" value="Create Class">
+                <input type="submit" name="classes_edit_submit" class="btn btn-primary" value="Update Class">
             </div>
         </form>
         <form method="POST" action="teacher_classes.php">

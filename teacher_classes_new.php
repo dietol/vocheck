@@ -3,7 +3,7 @@ include('check_teacherlogin.php');
 include ("static/connect-database.php");
 
 
-// Settings SaveChanges-button pressed -> Check and save Changes
+// New Class-button pressed -> New Class
 if (!empty($_POST["classes_new_submit"])) {
 
     $_classes_new_name = mysqli_real_escape_string($conn, $_POST["classes_new_name"]);
