@@ -15,3 +15,20 @@ Classes
 .list-delete {
     cursor: pointer;
 }
+
+
+/*
+Vocabulary List
+ */
+
+.vocabulary-list .table {
+    width: 70%;
+    margin: 0;
+}
+
+.vocabulary-list .table td,
+.vocabulary-list .table th {
+    width: 50%;
+    padding: 0;
+    border: unset;
+}

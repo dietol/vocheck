@@ -76,5 +76,19 @@ $( document ).ready(function() {
         });
     });
 
+    $('a[href="toListDetails"]').on( "click", function(e) {
+        e.preventDefault();
+        var listid = $(this).parent().attr('id');
+        listid = listid.split("-")[1];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_vocabulary_edit.php',
+            data: {op: "edit", id: listid}
+        }).done(function( msg ) {
+            document.write(msg);
+            document.close();
+        });
+    });
+
 });
 
