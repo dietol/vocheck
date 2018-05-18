@@ -51,5 +51,18 @@ $( document ).ready(function() {
         });
     });
 
+    $('.student-add').on( "click", function() {
+        var id = $(this).parent().attr('id');
+        var studentid = id.split("-")[1];
+        var classid = id.split("-")[2];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_classes_add_students.php',
+            data: {op: "add", studentid: studentid, classid: classid}
+        }).done(function() {
+            location.reload();
+        });
+    });
+
 });
 

@@ -10,6 +10,7 @@ Classes
 .class-edit,
 .class-duplicate,
 .class-delete,
-.student-delete {
+.student-delete,
+.student-add {
     cursor: pointer;
 }
