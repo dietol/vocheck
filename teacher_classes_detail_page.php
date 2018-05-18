@@ -53,13 +53,18 @@ include('check_teacherlogin.php');
 <div class="row">
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
         <h1>vocheck</h1>
-        <h2>Your teacher Account - Students in </h2>
+        <h2>Your teacher Account - Students in <strong><?php echo $_classname;?></strong></h2>
     </div>
 </div>
 <div class="row mt-4">
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <div class="text-right">
-            <form method="POST" action="teacher_classes_detail.php">
+        <div class="d-flex justify-content-between align-items-center">
+            <form method="POST" action="teacher_classes.php">
+                <input type="submit" name=class-detail-back class="btn btn-secondary" value="Go back"/>
+            </form>
+            <form method="POST" action="teacher_classes_add_students.php">
+                <label for="class-detail-classid" hidden></label>
+                <input type="text" name=class-detail-classid id="class-detail-classid" value="<?php echo $_classid;?>" hidden/>
                 <input type="submit" name=class-detail-add-student class="btn btn-dark" value="Add Student"/>
             </form>
         </div>

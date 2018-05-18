@@ -15,6 +15,8 @@ if (!empty($_POST["classes_new_submit"])) {
         exit;
     }
 
+    mysqli_close($conn);
+
     include("teacher_classes.php");
     exit;
 }

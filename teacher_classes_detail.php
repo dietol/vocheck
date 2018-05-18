@@ -26,6 +26,18 @@ switch ($_POST["op"]) {
             $_students_str = "No students in this class";
         }
 
+        $_sql = "SELECT name FROM classes WHERE classes.id = {$_POST['id']}";
+        if (!$_res = mysqli_query($conn, $_sql)) {
+            echo "Error: %s\n" . mysqli_sqlstate($conn);
+        }
+
+        $_classname = "";
+        if (mysqli_num_rows($_res) == 1) {
+            $row = mysqli_fetch_assoc($_res);
+            $_classname = $row["name"];
+        }
+        $_classid = $_POST["id"];
+
         mysqli_close($conn);
 
         include("teacher_classes_detail_page.php");
