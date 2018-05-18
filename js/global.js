@@ -64,5 +64,17 @@ $( document ).ready(function() {
         });
     });
 
+    $('.list-delete').on( "click", function() {
+        var listid = $(this).parent().parent().attr('id');
+        listid = listid.split("-")[1];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_vocabulary_edit.php',
+            data: {op: "remove", id: listid}
+        }).done(function() {
+            location.reload();
+        });
+    });
+
 });
 

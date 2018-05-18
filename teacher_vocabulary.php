@@ -79,8 +79,8 @@ mysqli_close($conn);
 <div class="row mt-4">
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
         <div class="text-right">
-            <form method="POST" action="teacher_classes_new.php">
-                <input type="submit" class="btn btn-dark" value="Create Class"/>
+            <form method="POST" action="teacher_vocabulary_new.php">
+                <input type="submit" class="btn btn-dark" value="Create List"/>
             </form>
         </div>
         <div class="card mt-4">

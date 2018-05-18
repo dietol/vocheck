@@ -11,6 +11,7 @@ Classes
 .class-duplicate,
 .class-delete,
 .student-delete,
-.student-add {
+.student-add,
+.list-delete {
     cursor: pointer;
 }
