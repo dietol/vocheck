@@ -101,7 +101,6 @@ $( document ).ready(function() {
     });
 
     $('.vocab-delete').on( "click", function() {
-        alert("Hello");
         var id = $(this).parent().parent().attr('id');
         var vocid = id.split("-")[1];
         var listid = id.split("-")[2];
