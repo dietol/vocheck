@@ -12,7 +12,9 @@ Classes
 .class-delete,
 .student-delete,
 .student-add,
-.list-delete {
+.list-delete,
+.vocab-edit,
+.vocab-delete {
     cursor: pointer;
 }
 
@@ -20,6 +22,18 @@ Classes
 /*
 Vocabulary List
  */
+
+.vocabulary_entry {
+    width: 85%;
+}
+
+.vocabulary_entry > input[type=text] {
+    width: 38%;
+}
+
+.vocabulary_entry > input[type=text][readonly] {
+    border: unset;
+}
 
 .vocabulary-list .table {
     width: 70%;

@@ -90,5 +90,36 @@ $( document ).ready(function() {
         });
     });
 
+    $('.vocab-edit').on( "click", function() {
+        var vocabid = $(this).parent().parent().attr('id');
+        var first = "#vocabulary_first-" + vocabid.split("-")[1];
+        var second = "#vocabulary_second-" + vocabid.split("-")[1];
+        var button = "#vocabulary_entry_save-" + vocabid.split("-")[1];
+        $(first).prop("readonly", false);
+        $(second).prop("readonly", false);
+        $(button).prop("hidden", false);
+    });
+
+    $('.vocab-delete').on( "click", function() {
+        alert("Hello");
+        var id = $(this).parent().parent().attr('id');
+        var vocid = id.split("-")[1];
+        var listid = id.split("-")[2];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_vocabulary_edit_vocab.php',
+            data: {op: "delete", vocid: vocid, listid: listid}
+        }).done(function() {
+            $.ajax({
+                method: 'POST',
+                url: 'teacher_vocabulary_edit.php',
+                data: {op: "edit", id: listid}
+            }).done(function( msg ) {
+                document.write(msg);
+                document.close();
+            });
+        });
+    });
+
 });
 
