@@ -50,7 +50,11 @@ switch ($_POST["op"]) {
                 }
             }
         } else {
-            $_vocs_str = "No vocabulary";
+            if ($_list_status == 0) {
+                $_vocs_str = "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"vocab-new\"><form method=\"POST\" action=\"teacher_vocabulary_edit_vocab.php\" id=\"vocab_form-new\" class=\"vocabulary_entry\"><label for=\"vocabulary_list\" hidden >Nothing</label><input type =\"text\" name = \"vocabulary_list\" id = \"vocabulary_list\"  value = \"{$_listid}\" hidden /><label for=\"vocabulary_first-new\" hidden > Nothing</label ><input type=\"text\" name=\"vocabulary_first\" id=\"vocabulary_first-new\"  value=\"New Vocabulary\" /><label for=\"vocabulary_second-new\" hidden > Nothing</label ><input type=\"text\" class=\"ml-1\" name=\"vocabulary_second\" id=\"vocabulary_second-new\" value=\"Translation\"/><input type=\"submit\" class=\"btn btn-info ml-3\" name=\"vocabulary_entry_save-new\" value=\"Add\"/ ></form></li>";
+            } else {
+                $_vocs_str = "No vocabulary";
+            }
         }
 
         mysqli_close($conn);
@@ -80,6 +84,58 @@ switch ($_POST["op"]) {
             echo "Error: %s\n" . mysqli_sqlstate($conn);
             exit;
         }
+
+        // Create Statistics Objects for every student
+
+        // 1. All vocabulary ids from this list
+        $_sql = "SELECT vocabulary FROM vocabulary_lists WHERE list={$_listid} AND deleted=0";
+
+        if (!$_res = mysqli_query($conn, $_sql)) {
+            echo "Error: %s\n" . mysqli_sqlstate($conn);
+        }
+
+        // 2. Get class of list
+        $_sql2 = "SELECT class FROM lists WHERE id={$_listid}";
+
+        if (!$_res2 = mysqli_query($conn, $_sql2)) {
+            echo "Error: %s\n" . mysqli_sqlstate($conn);
+        }
+        if (mysqli_num_rows($_res2) == 1) {
+            $row = mysqli_fetch_assoc($_res2);
+            $_list_class = $row["class"];
+        } else {
+            echo "Error. Do not found class to list.";
+            // Close Database
+            mysqli_close($conn);
+            exit;
+        }
+
+        // 3. Get all students of list
+        $_sql3 = "SELECT student FROM user_classes WHERE deleted = 0 AND class={$_list_class}";
+
+        if (!$_res3 = mysqli_query($conn, $_sql3)) {
+            echo "Error: %s\n" . mysqli_sqlstate($conn);
+        }
+
+
+        // Create statistic elements
+        $_students = array();
+        while ($row3 = mysqli_fetch_assoc($_res3)) {
+            $_students[] = $row3["student"];
+        }
+
+        while ($row = mysqli_fetch_assoc($_res)) {
+            foreach ($_students as $_student) {
+                $_sql = "INSERT INTO statistics (student, list, vocab) VALUES ('{$_student}', '{$_listid}', '{$row['vocabulary']}')";
+
+                if (!mysqli_query($conn, $_sql)) {
+                    echo "Error: %s\n" . mysqli_sqlstate($conn);
+                    echo "Could not create statistics element.";
+                    exit;
+                }
+            }
+        }
+
 
         // Close Database
         mysqli_close($conn);
