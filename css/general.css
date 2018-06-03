@@ -59,3 +59,15 @@ Vocabulary List
 .list-deactivated {
     color: #999999;
 }
+
+/*
+Lets vocheck tool
+ */
+.vocheck_translate,
+#vocheck_tool_input {
+    text-align: center;
+}
+
+.vocheck_second_language {
+    margin-top: 2rem;
+}

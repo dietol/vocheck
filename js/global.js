@@ -145,5 +145,19 @@ $( document ).ready(function() {
         });
     });
 
+    $('a[href="toListVocheck"]').on( "click", function(e) {
+        e.preventDefault();
+        var listid = $(this).parent().attr('id');
+        listid = listid.split("-")[1];
+        $.ajax({
+            method: 'POST',
+            url: 'student_vocheck_tool.php',
+            data: {lid: listid}
+        }).done(function( msg ) {
+            document.write(msg);
+            document.close();
+        });
+    });
+
 });
 
