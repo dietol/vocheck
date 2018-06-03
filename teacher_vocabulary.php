@@ -2,7 +2,7 @@
 include('check_teacherlogin.php');
 include('static/connect-database.php');
 
-$_sql = "SELECT temp2.t1_id AS t2_id, temp2.t1_name AS t2_name, temp2.t1_fl AS t2_fl, languages.name AS t2_sl, temp2.t1_cname AS t2_cname FROM (SELECT temp1.l_id AS t1_id, temp1.l_name AS t1_name, languages.name AS t1_fl, temp1.l_sl AS t1_sl, temp1.c_name AS t1_cname FROM (SELECT lists.id AS l_id, lists.name AS l_name, lists.first_language AS l_fl, lists.second_language AS l_sl, classes.name AS c_name FROM lists LEFT JOIN classes ON lists.class=classes.id WHERE classes.deleted=0 AND lists.deleted=0 AND classes.teacher={$_SESSION["user"]["id"]}) AS temp1 LEFT JOIN languages ON temp1.l_fl=languages.id) AS temp2 LEFT JOIN languages ON temp2.t1_sl=languages.id";
+$_sql = "SELECT temp2.t1_id AS t2_id, temp2.t1_name AS t2_name, temp2.t1_stat AS t2_stat, temp2.t1_fl AS t2_fl, languages.name AS t2_sl, temp2.t1_cname AS t2_cname FROM (SELECT temp1.l_id AS t1_id, temp1.l_name AS t1_name, temp1.l_stat AS t1_stat, languages.name AS t1_fl, temp1.l_sl AS t1_sl, temp1.c_name AS t1_cname FROM (SELECT lists.id AS l_id, lists.name AS l_name, lists.status AS l_stat, lists.first_language AS l_fl, lists.second_language AS l_sl, classes.name AS c_name FROM lists LEFT JOIN classes ON lists.class=classes.id WHERE classes.deleted=0 AND lists.deleted=0 AND classes.teacher={$_SESSION["user"]["id"]}) AS temp1 LEFT JOIN languages ON temp1.l_fl=languages.id) AS temp2 LEFT JOIN languages ON temp2.t1_sl=languages.id";
 if (!$_res = mysqli_query($conn, $_sql)) {
     echo "Error: %s\n" . mysqli_sqlstate($conn);
 }
@@ -12,7 +12,13 @@ $_lists_str = "";
 if (mysqli_num_rows($_res) > 0) {
     // output data of each row
     while ($row = mysqli_fetch_assoc($_res)) {
-        $_lists_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"list-{$row["t2_id"]}\"><a href='toListDetails'>{$row["t2_name"]}</a><span><span class=\"mr-5\">{$row["t2_cname"]}</span><span class=\"mr-5\">{$row["t2_fl"]} - {$row["t2_sl"]}</span><i class=\"fas fa-trash-alt list-delete\"></i></span></li>";
+        if ($row["t2_stat"] == 0) {
+            $_lists_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"list-{$row["t2_id"]}\"><a href='toListDetails'>{$row["t2_name"]}</a><span><span class=\"mr-5\">{$row["t2_cname"]}</span><span class=\"mr-5\">{$row["t2_fl"]} - {$row["t2_sl"]}</span><i class=\"fas fa-lock-open mr-3 list-activate\"></i><i class=\"fas fa-trash-alt list-delete\"></i></span></li>";
+        } else if ($row["t2_stat"] == 1) {
+            $_lists_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"list-{$row["t2_id"]}\"><a href='toListDetails'>{$row["t2_name"]}</a><span><span class=\"mr-5\">{$row["t2_cname"]}</span><span class=\"mr-5\">{$row["t2_fl"]} - {$row["t2_sl"]}</span><i class=\"fas fa-lock mr-3 list-deactivate\"></i><i class=\"fas fa-trash-alt list-delete\"></i></span></li>";
+        } else {
+            $_lists_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"list-{$row["t2_id"]}\"><a href='toListDetails'>{$row["t2_name"]}</a><span><span class=\"mr-5\">{$row["t2_cname"]}</span><span class=\"mr-5\">{$row["t2_fl"]} - {$row["t2_sl"]}</span><i class=\"fas fa-lock mr-3 list-deactivated\"></i><i class=\"fas fa-trash-alt list-delete\"></i></span></li>";
+        }
     }
 } else {
     $_lists_str = "No Lists";

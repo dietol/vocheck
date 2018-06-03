@@ -121,5 +121,29 @@ $( document ).ready(function() {
         });
     });
 
+    $('.list-activate').on( "click", function() {
+        var listid = $(this).parent().parent().attr('id');
+        listid = listid.split("-")[1];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_vocabulary_edit.php',
+            data: {op: "activate", id: listid}
+        }).done(function() {
+            location.reload();
+        });
+    });
+
+    $('.list-deactivate').on( "click", function() {
+        var listid = $(this).parent().parent().attr('id');
+        listid = listid.split("-")[1];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_vocabulary_edit.php',
+            data: {op: "deactivate", id: listid}
+        }).done(function() {
+            location.reload();
+        });
+    });
+
 });
 
