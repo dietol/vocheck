@@ -98,6 +98,7 @@ $( document ).ready(function() {
         $(first).prop("readonly", false);
         $(second).prop("readonly", false);
         $(button).prop("hidden", false);
+        $(this).hide();
     });
 
     $('.vocab-delete').on( "click", function() {
