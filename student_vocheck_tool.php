@@ -2,7 +2,6 @@
 include('check_studentlogin.php');
 include('static/connect-database.php');
 
-// Edit or Delete Class
 if (!isset($_POST['lid']) && !isset($_lid)) {
     echo "Error. Invalid Call.";
     exit;
@@ -26,12 +25,12 @@ while ($row = mysqli_fetch_assoc($_res)) {
 
 $_amount_vocab = count($_possible_vocabs);
 
-$_chosen_vocab = $_possible_vocabs[rand(0, $_amount_vocab)];
+$_chosen_vocab = $_possible_vocabs[rand(0, $_amount_vocab-1)];
 
 $_sql = "SELECT temp.meaning_first_language AS mfl, temp.langname AS fl, languages.name AS sl FROM (SELECT meaning_first_language, languages.name AS langname, second_language FROM vocabulary JOIN languages ON first_language = languages.id WHERE vocabulary.id = {$_chosen_vocab}) AS temp JOIN languages ON temp.second_language = languages.id";
 
 if (!$_res = mysqli_query($conn, $_sql)) {
-    echo "Error2: %s\n" . mysqli_sqlstate($conn);
+    echo "Error2: %s\n" .$_sql. mysqli_sqlstate($conn);
     exit;
 }
 

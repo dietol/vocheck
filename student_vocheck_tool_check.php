@@ -20,18 +20,35 @@ if (!empty($_POST["vocheck_tool_submit"])) {
     if (mysqli_num_rows($_res) == 1) {
         $row = mysqli_fetch_assoc($_res);
         if ($row["msl"] == $_input) {
-            echo "Right!";
+            // Update statistics to 2 - correct
+            $_sql = "UPDATE statistics SET status=2 WHERE student={$_SESSION["user"]["id"]} AND vocab={$_vid} AND list={$_lid}";
+            if (!mysqli_query($conn, $_sql)) {
+                echo "Error: Could not update statistics! " . mysqli_error($conn);
+                exit;
+            }
+
+            // Call correct-view
+            $_correct = 1;
+            include("student_vocheck_tool_step.php");
+            mysqli_close($conn);
+            exit;
         } else {
-            echo "Wrong!";
+            // Update statistics to 2 - seen but incorrect
+            $_sql = "UPDATE statistics SET status=1 WHERE student={$_SESSION["user"]["id"]} AND vocab={$_vid} AND list={$_lid}";
+            if (!mysqli_query($conn, $_sql)) {
+                echo "Error: Could not update statistics! " . mysqli_error($conn);
+                exit;
+            }
+
+            // Call wrong-view
+            $_correct = 0;
+            include("student_vocheck_tool_step.php");
+            mysqli_close($conn);
+            exit;
         }
     } else {
         echo "Error. Did not found vocabulary in DB.";
+        mysqli_close($conn);
         exit;
     }
-
-
-    include("student_vocheck_tool.php");
-    exit;
 }
-
-echo "Hello";
