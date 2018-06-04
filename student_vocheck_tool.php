@@ -25,6 +25,14 @@ while ($row = mysqli_fetch_assoc($_res)) {
 
 $_amount_vocab = count($_possible_vocabs);
 
+if ($_amount_vocab == 0) {
+    $_correct = 2;
+    $_vid = -1;
+    include("student_vocheck_tool_step.php");
+    mysqli_close($conn);
+    exit;
+}
+
 $_chosen_vocab = $_possible_vocabs[rand(0, $_amount_vocab-1)];
 
 $_sql = "SELECT temp.meaning_first_language AS mfl, temp.langname AS fl, languages.name AS sl FROM (SELECT meaning_first_language, languages.name AS langname, second_language FROM vocabulary JOIN languages ON first_language = languages.id WHERE vocabulary.id = {$_chosen_vocab}) AS temp JOIN languages ON temp.second_language = languages.id";

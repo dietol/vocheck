@@ -7,23 +7,25 @@ if (!isset($_vid) || !isset($_correct) || !isset($_lid)) {
     exit;
 }
 
-$_sql = "SELECT temp.mfl AS mfl, temp.msl AS msl, temp.fl AS fl, languages.name AS sl FROM (SELECT meaning_first_language AS mfl, meaning_second_language AS msl, languages.name AS fl, second_language AS sl FROM vocabulary JOIN languages ON first_language = languages.id WHERE vocabulary.id = {$_vid} AND deleted = 0) AS temp JOIN languages ON temp.sl = languages.id";
+if ($_correct != 2) {
+    $_sql = "SELECT temp.mfl AS mfl, temp.msl AS msl, temp.fl AS fl, languages.name AS sl FROM (SELECT meaning_first_language AS mfl, meaning_second_language AS msl, languages.name AS fl, second_language AS sl FROM vocabulary JOIN languages ON first_language = languages.id WHERE vocabulary.id = {$_vid} AND deleted = 0) AS temp JOIN languages ON temp.sl = languages.id";
 
-if (!$_res = mysqli_query($conn, $_sql)) {
-    echo "Error: " . mysqli_error($conn);
-    exit;
-}
+    if (!$_res = mysqli_query($conn, $_sql)) {
+        echo "Error: " . mysqli_error($conn);
+        exit;
+    }
 
-if (mysqli_num_rows($_res) == 1) {
-    $row = mysqli_fetch_assoc($_res);
-    $_voc_mfl = $row["mfl"];
-    $_voc_msl = $row["msl"];
-    $_voc_fl = $row["fl"];
-    $_voc_sl = $row["sl"];
-} else {
-    echo "Error. Did not found vocabulary in DB.";
-    mysqli_close($conn);
-    exit;
+    if (mysqli_num_rows($_res) == 1) {
+        $row = mysqli_fetch_assoc($_res);
+        $_voc_mfl = $row["mfl"];
+        $_voc_msl = $row["msl"];
+        $_voc_fl = $row["fl"];
+        $_voc_sl = $row["sl"];
+    } else {
+        echo "Error. Did not found vocabulary in DB.";
+        mysqli_close($conn);
+        exit;
+    }
 }
 
 ?>
@@ -81,24 +83,24 @@ if (mysqli_num_rows($_res) == 1) {
     </div>
 </div>
 <?php if ($_correct == 1) :?>
-<div class="row mb-3">
-    <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
-        <div class="card border-success">
-            <div class="card-header">Let's vocheck</div>
-            <div class="card-body text-success">
-                <h3>This answer was right!</h3>
-                <form method="POST" action="student_vocheck_tool.php">
-                    <label for="list_id" hidden >Nothing</label>
-                    <input type ="text" name ="lid" id ="list_id"  value ="<?php echo $_lid;?>" hidden />
-                    <div class="form-group text-center">
-                        <input type="submit" name="vocheck_tool_submit" class="btn btn-success" value="Continue">
-                    </div>
-                </form>
+    <div class="row mb-3">
+        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
+            <div class="card border-success">
+                <div class="card-header">Let's vocheck</div>
+                <div class="card-body text-success">
+                    <h3>This answer was right!</h3>
+                    <form method="POST" action="student_vocheck_tool.php">
+                        <label for="list_id" hidden >Nothing</label>
+                        <input type ="text" name ="lid" id ="list_id"  value ="<?php echo $_lid;?>" hidden />
+                        <div class="form-group text-center">
+                            <input type="submit" name="vocheck_tool_submit" class="btn btn-success" value="Continue">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<?php else : ?>
+<?php elseif ($_correct == 0) : ?>
     <div class="row mb-3">
         <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
             <div class="card border-danger">
@@ -113,6 +115,22 @@ if (mysqli_num_rows($_res) == 1) {
                         <input type ="text" name ="lid" id ="list_id"  value ="<?php echo $_lid;?>" hidden />
                         <div class="form-group text-center">
                             <input type="submit" name="vocheck_tool_submit" class="btn btn-danger" value="Continue">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php else : ?>
+    <div class="row mb-3">
+        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
+            <div class="card border-success">
+                <div class="card-header">Let's vocheck</div>
+                <div class="card-body text-success">
+                    <h3>You finished all vocabularies! Great job!</h3>
+                    <form method="POST" action="student_vocheck.php">
+                        <div class="form-group text-center">
+                            <input type="submit" name="vocheck_tool_submit" class="btn btn-success" value="Finish">
                         </div>
                     </form>
                 </div>
