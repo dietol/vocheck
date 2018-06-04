@@ -56,5 +56,21 @@ include('check_studentlogin.php');
     </div>
 </div>
 
+<div class="row mb-3">
+    <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
+        <div class="card border-primary">
+            <div class="card-header">Let's start</div>
+            <div class="card-body text-primary">
+                <p>It's time to vocheck. Let's go!</p>
+                <form method="POST" action="student_vocheck.php">
+                    <div class="form-group text-center">
+                        <input type="submit" name="vocheck_tool_submit" class="btn btn-dark" value="Let's vocheck">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
