@@ -71,8 +71,6 @@ if (count($lists) > 0) {
             $_list_class = "list_deactivated";
         }
 
-        //$_lists_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center {$_list_class}\"><span>{$list["t4_name"]}</span><span class=\"mr-5\">{$list["t4_cname"]}</span><span>{$list["t4_fl"]} - {$list["t4_sl"]}</span><span class=\"voc_num_unseen\">{$_num_unseen}</span><span class=\"voc_num_incorrect\">{$_num_incorrect}</span><span class=\"voc_num_correct\">{$_num_correct}</span></li>";
-
         $_lists_str .= "<li class=\"list-group-item {$_list_class}\"><div class=\"row\"><div class=\"col-3\"><span>{$list["t4_name"]}</span></div><div class=\"col-3\"><span>{$list["t4_cname"]}</span></div><div class=\"col-3\"><span>{$list["t4_fl"]} - {$list["t4_sl"]}</span></div><div class=\"col-1\"><span class=\"voc_num_unseen\">{$_num_unseen}</span></div><div class=\"col-1\"><span class=\"voc_num_incorrect\">{$_num_incorrect}</span></div><div class=\"col-1\"><span class=\"voc_num_correct\">{$_num_correct}</span></div></div></li>";
     }
 } else {
