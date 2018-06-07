@@ -54,12 +54,16 @@ include('check_teacherlogin.php');
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
         <h1>vocheck</h1>
         <h2>Your teacher Account - vocheck Control</h2>
-
     </div>
 </div>
 
 <div class="row mt-4">
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+        <form method="POST" action="teacher_vControl_class.php">
+            <label for="class-id" hidden></label>
+            <input type="text" name="cid" id="class-id" value="<?php echo $_cid;?>" hidden/>
+            <input type="submit" name=vControl-list-back class="btn btn-secondary" value="Go back to class"/>
+        </form>
         <div class="card mt-4">
             <div class="card-body">
                 <div class="card-header bg-secondary text-white">
