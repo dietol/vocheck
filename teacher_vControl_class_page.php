@@ -61,6 +61,14 @@ include('check_teacherlogin.php');
     <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
         <div class="card mt-4">
             <div class="card-body">
+                <div class="card-header bg-secondary text-white">
+                    <div class="row font-weight-bold">
+                        <div class="col-6">Lists</div>
+                        <div class="col-2 voc_num_unseen"><i class="fas fa-eye-slash"></i></div>
+                        <div class="col-2 voc_num_incorrect"><i class="fas fa-times-circle"></i></div>
+                        <div class="col-2 voc_num_correct"><i class="fas fa-check-circle"></i></div>
+                    </div>
+                </div>
                 <ul class="list-group">
                     <?php echo $_lists_str;?>
                 </ul>
