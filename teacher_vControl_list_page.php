@@ -58,5 +58,17 @@ include('check_teacherlogin.php');
     </div>
 </div>
 
+<div class="row mt-4">
+    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+        <div class="card mt-4">
+            <div class="card-body">
+                <ul class="list-group">
+                    <?php echo $_students_str;?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

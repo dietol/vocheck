@@ -159,5 +159,34 @@ $( document ).ready(function() {
         });
     });
 
+    $('a[href="toClassStat"]').on( "click", function(e) {
+        e.preventDefault();
+        var classid = $(this).parent().attr('id');
+        classid = classid.split("-")[1];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_vControl_class.php',
+            data: {cid: classid}
+        }).done(function( msg ) {
+            document.write(msg);
+            document.close();
+        });
+    });
+
+    $('a[href="toListStat"]').on( "click", function(e) {
+        e.preventDefault();
+        var ids = $(this).parent().attr('id');
+        var listid = ids.split("-")[1];
+        var classid = ids.split("-")[2];
+        $.ajax({
+            method: 'POST',
+            url: 'teacher_vControl_list.php',
+            data: {lid: listid, cid: classid}
+        }).done(function( msg ) {
+            document.write(msg);
+            document.close();
+        });
+    });
+
 });
 
