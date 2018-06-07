@@ -59,5 +59,21 @@ include('check_teacherlogin.php');
     </div>
 </div>
 
+<div class="row mb-3">
+    <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
+        <div class="card border-primary">
+            <div class="card-header">Let's start</div>
+            <div class="card-body text-primary">
+                <p>Let's check the learning status of your students!</p>
+                <form method="POST" action="teacher_vControl.php">
+                    <div class="form-group text-center">
+                        <input type="submit" name="vControl_submit" class="btn btn-dark" value="Go to vocheck Control">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
