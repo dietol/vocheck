@@ -87,6 +87,7 @@ Statistic View student
     color: yellowgreen;
 }
 
-.list_deactivated {
+.list_deactivated,
+.list_deactivated a {
     color: darkgrey;
 }
