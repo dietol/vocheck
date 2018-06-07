@@ -175,7 +175,7 @@ $( document ).ready(function() {
 
     $('a[href="toListStat"]').on( "click", function(e) {
         e.preventDefault();
-        var ids = $(this).parent().attr('id');
+        var ids = $(this).parent().parent().parent().attr('id');
         var listid = ids.split("-")[1];
         var classid = ids.split("-")[2];
         $.ajax({
