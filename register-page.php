@@ -39,10 +39,11 @@
             <h1>vocheck</h1>
             <h2>The new vocabulary checking tool for teachers and pupils</h2>
             <h2>Register</h2>
+            <p>Register here for your account in the new <b>vocheck</b> tool!</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-sm-12 col-12">
+        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
             <form method="POST" action="register.php">
                 <div class="form-group row">
                     <div class="col">

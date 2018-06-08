@@ -14,7 +14,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href=".">vocheck</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -46,7 +47,12 @@
             <h1>vocheck</h1>
             <h2>The new vocabulary checking tool for teachers and pupils</h2>
 
-            <p>Contact section</p>
+            <p><br/>Are you interested? Than just try out the new <b>vocheck</b> tool! Register in one minute and start
+                improving your lessons! <br/><br/></p>
+
+            <h3>Questions?</h3>
+            <p>You have some questions? Don't hesitate to contact us. Just write us an email to <a
+                        href="mailto:contact@oliverdietz.com">contact@oliverdietz.com</a>.</p>
         </div>
     </div>
 </div>
