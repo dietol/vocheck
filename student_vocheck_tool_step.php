@@ -84,7 +84,7 @@ if ($_correct != 2) {
         </div>
     </div>
     <?php if ($_correct == 1) :?>
-        <div class="row mb-3">
+        <div class="row mt-4">
             <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
                 <div class="card border-success">
                     <div class="card-header">Let's vocheck</div>
@@ -102,7 +102,7 @@ if ($_correct != 2) {
             </div>
         </div>
     <?php elseif ($_correct == 0) : ?>
-        <div class="row mb-3">
+        <div class="row mt-4">
             <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
                 <div class="card border-danger">
                     <div class="card-header">Let's vocheck</div>
@@ -123,7 +123,7 @@ if ($_correct != 2) {
             </div>
         </div>
     <?php else : ?>
-        <div class="row mb-3">
+        <div class="row mt-4">
             <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
                 <div class="card border-success">
                     <div class="card-header">Let's vocheck</div>
