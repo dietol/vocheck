@@ -147,7 +147,7 @@ $( document ).ready(function() {
 
     $('a[href="toListVocheck"]').on( "click", function(e) {
         e.preventDefault();
-        var listid = $(this).parent().attr('id');
+        var listid = $(this).parent().parent().parent().attr('id');
         listid = listid.split("-")[1];
         $.ajax({
             method: 'POST',
