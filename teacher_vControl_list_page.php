@@ -54,7 +54,8 @@ include('check_teacherlogin.php');
     <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <h1>vocheck</h1>
-            <h2>Your teacher Account - vocheck Control</h2>
+            <h2>Your teacher Account - vocheck Control<br/><br/></h2>
+            <p>Here you see the progress of every single student of your class.</p>
         </div>
     </div>
 

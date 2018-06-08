@@ -18,7 +18,8 @@ include('check_teacherlogin.php');
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="teacher_home.php">vocheck</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -54,14 +55,17 @@ include('check_teacherlogin.php');
     <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <h1>vocheck</h1>
-            <h2>Your teacher Account - vocheck Control</h2>
+            <h2>Your teacher Account - vocheck Control<br/><br/></h2>
+            <p>Here you find all lists for your class. You can see the progress of your class doing the list. For more
+                details click on the list.</p>
         </div>
     </div>
 
     <div class="row mt-4">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <form method="POST" action="teacher_vControl.php">
-                <input type="submit" name=vControl-class-back class="btn btn-secondary" value="Go back to vocheck Control"/>
+                <input type="submit" name=vControl-class-back class="btn btn-secondary"
+                       value="Go back to vocheck Control"/>
             </form>
             <div class="card mt-4">
                 <div class="card-body">
@@ -74,7 +78,7 @@ include('check_teacherlogin.php');
                         </div>
                     </div>
                     <ul class="list-group">
-                        <?php echo $_lists_str;?>
+                        <?php echo $_lists_str; ?>
                     </ul>
                 </div>
             </div>

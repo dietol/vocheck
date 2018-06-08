@@ -70,14 +70,23 @@ mysqli_close($conn);
     <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <h1>vocheck</h1>
-            <h2>Your student Account - Let's vocheck</h2>
+            <h2>Your student Account - Let's vocheck<br/><br/></h2>
+
+            <p>Choose a list and let's vocheck!</p>
 
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div class="card mt-4">
                 <div class="card-body">
+                    <div class="card-header bg-secondary text-white">
+                        <div class="row font-weight-bold">
+                            <div class="col-6">Lists</div>
+                            <div class="col-3">Class</div>
+                            <div class="col-3">Language</div>
+                        </div>
+                    </div>
                     <ul class="list-group">
                         <?php echo $_lists_str; ?>
                     </ul>

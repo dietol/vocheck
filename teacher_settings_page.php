@@ -55,11 +55,11 @@ include('check_teacherlogin.php');
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <h1>vocheck</h1>
             <h2>Your teacher Account - Settings</h2>
-            <p>Edit your Settings of the profil</p>
+            <p>Edit the settings of your profil</p>
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-sm-12 col-12">
+        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
             <form method="POST" action="teacher_settings.php">
                 <h3>Basic Account properties</h3>
                 <div class="form-group">
@@ -83,7 +83,7 @@ include('check_teacherlogin.php');
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-sm-12 col-12">
+        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
             <form method="POST" action="teacher_settings.php">
                 <h3>Change Password</h3>
                 <div class="form-group">
@@ -101,7 +101,7 @@ include('check_teacherlogin.php');
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-sm-12 col-12">
+        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
             <form>
                 <h3>Fixed account properties</h3>
                 <div class="form-group">
@@ -116,7 +116,7 @@ include('check_teacherlogin.php');
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-sm-12 col-12">
+        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
             <h3>Delete Account</h3>
             <div class="card border-danger">
                 <div class="card-header">Danger zone</div>

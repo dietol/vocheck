@@ -73,10 +73,11 @@ mysqli_close($conn);
     <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <h1>vocheck</h1>
-            <h2>Your teacher Account - Classes</h2>
+            <h2>Your teacher Account - Classes<br/><br/></h2>
+            <p>Here you can create new classes and edit the students of your class.</p>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div class="text-right">
                 <form method="POST" action="teacher_classes_new.php">
@@ -85,6 +86,12 @@ mysqli_close($conn);
             </div>
             <div class="card mt-4">
                 <div class="card-body">
+                    <div class="card-header bg-secondary text-white">
+                        <div class="row font-weight-bold">
+                            <div class="col-6">My classes</div>
+                            <div class="col-4">Language of class</div>
+                        </div>
+                    </div>
                     <ul class="list-group">
                         <?php echo $_classes_str;?>
                     </ul>

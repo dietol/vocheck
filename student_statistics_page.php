@@ -51,11 +51,12 @@ include('check_studentlogin.php');
     <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <h1>vocheck</h1>
-            <h2>Your student Account - Statistics</h2>
+            <h2>Your student Account - Statistics <br/><br/></h2>
+            <p>Here you have an overview about your progress in your vocheck lists.</p>
 
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div class="card mt-4">
                 <div class="card-body">

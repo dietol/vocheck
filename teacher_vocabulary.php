@@ -80,10 +80,12 @@ mysqli_close($conn);
     <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <h1>vocheck</h1>
-            <h2>Your teacher Account - Vocabulary Lists</h2>
+            <h2>Your teacher Account - Vocabulary Lists<br/><br/></h2>
+            <p>Here you can create new vocabulary lists and edit your current one. You can aktivate and deactivate them
+                also.</p>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div class="text-right">
                 <form method="POST" action="teacher_vocabulary_new.php">
@@ -92,6 +94,13 @@ mysqli_close($conn);
             </div>
             <div class="card mt-4">
                 <div class="card-body">
+                    <div class="card-header bg-secondary text-white">
+                        <div class="row font-weight-bold">
+                            <div class="col-4">Lists</div>
+                            <div class="col-3">Class</div>
+                            <div class="col-3">Language</div>
+                        </div>
+                    </div>
                     <ul class="list-group">
                         <?php echo $_lists_str; ?>
                     </ul>

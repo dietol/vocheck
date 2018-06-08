@@ -47,8 +47,8 @@
             <h1>vocheck</h1>
             <h2>The new vocabulary checking tool for teachers and pupils</h2>
 
-            <p><b>vocheck</b> is a new tool for teachers and pupils to easily check and do vocabulary homework. Teachers can
-                create vocabulary lists for homework and the students can do their homework online.</p>
+            <p><br/><b>vocheck</b> is a new tool for teachers and pupils to easily check and do vocabulary homework. Teachers can
+                create vocabulary lists for homework and the students can do their homework online.<br/><br/></p>
             <h3>Importance and Relevance</h3>
             <p>Learning vocabularies as a homework is always a difficult business for all parties. On the one hand the
                 pupils do not want to learn vocabularies from the book or getting in an awkward situation when the

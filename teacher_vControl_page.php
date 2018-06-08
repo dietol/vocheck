@@ -18,7 +18,8 @@ include('check_teacherlogin.php');
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="teacher_home.php">vocheck</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -54,17 +55,24 @@ include('check_teacherlogin.php');
     <div class="row">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <h1>vocheck</h1>
-            <h2>Your teacher Account - vocheck Control</h2>
-
+            <h2>Your teacher Account - vocheck Control<br/><br/></h2>
+            <p>Here is the Control panel for your vocabulary lists. You can see the progress of your students here. Just
+                chose one class and continue.</p>
         </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-2">
         <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div class="card mt-4">
                 <div class="card-body">
+                    <div class="card-header bg-secondary text-white">
+                        <div class="row font-weight-bold">
+                            <div class="col-8">My classes</div>
+                            <div class="col-4">Language of class</div>
+                        </div>
+                    </div>
                     <ul class="list-group">
-                        <?php echo $_classes_str;?>
+                        <?php echo $_classes_str; ?>
                     </ul>
                 </div>
             </div>
