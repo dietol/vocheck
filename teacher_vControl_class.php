@@ -92,9 +92,15 @@ if (count($lists) > 0) {
 
         // Calculation Percentages
         $_total_voc = $_num_unseen + $_num_incorrect + $_num_correct;
-        $_num_unseen = round(($_num_unseen * 100) / $_total_voc, 2);
-        $_num_incorrect = round(($_num_incorrect * 100) / $_total_voc, 2);
-        $_num_correct = round(($_num_correct * 100) / $_total_voc, 2);
+        if ($_total_voc == 0) {
+            $_num_unseen = "-";
+            $_num_incorrect = "-";
+            $_num_correct = "-";
+        } else {
+            $_num_unseen = round(($_num_unseen * 100) / $_total_voc, 2);
+            $_num_incorrect = round(($_num_incorrect * 100) / $_total_voc, 2);
+            $_num_correct = round(($_num_correct * 100) / $_total_voc, 2);
+        }
 
         $_lists_str .= "<li class=\"list-group-item {$_list_class}\" id=\"list-{$list["lid"]}-{$_cid}\"><div class=\"row\"><div class=\"col-6\"><a href='toListStat'>{$list["lname"]}</a></div><div class=\"col-2\"><span class=\"voc_num_unseen\">{$_num_unseen} %</span></div><div class=\"col-2\"><span class=\"voc_num_incorrect\">{$_num_incorrect} %</span></div><div class=\"col-2\"><span class=\"voc_num_correct\">{$_num_correct} %</span></div></div></li>";
     }
