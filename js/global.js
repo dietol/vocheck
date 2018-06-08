@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 
     $('.class-delete').on( "click", function() {
-        var classid = $(this).parent().parent().attr('id');
+        var classid = $(this).parent().parent().parent().attr('id');
         classid = classid.split("-")[1];
         $.ajax({
             method: 'POST',
@@ -65,7 +65,7 @@ $( document ).ready(function() {
     });
 
     $('.list-delete').on( "click", function() {
-        var listid = $(this).parent().parent().attr('id');
+        var listid = $(this).parent().parent().parent().attr('id');
         listid = listid.split("-")[1];
         $.ajax({
             method: 'POST',
@@ -122,7 +122,7 @@ $( document ).ready(function() {
     });
 
     $('.list-activate').on( "click", function() {
-        var listid = $(this).parent().parent().attr('id');
+        var listid = $(this).parent().parent().parent().attr('id');
         listid = listid.split("-")[1];
         $.ajax({
             method: 'POST',
@@ -134,7 +134,7 @@ $( document ).ready(function() {
     });
 
     $('.list-deactivate').on( "click", function() {
-        var listid = $(this).parent().parent().attr('id');
+        var listid = $(this).parent().parent().parent().attr('id');
         listid = listid.split("-")[1];
         $.ajax({
             method: 'POST',
