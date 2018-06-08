@@ -1,6 +1,12 @@
 body {
     background: #effafc;
 }
+h2 {
+    font-size: 1.6rem;
+}
+h3 {
+    font-size: 1.4rem;
+}
 
 /*
 Classes
