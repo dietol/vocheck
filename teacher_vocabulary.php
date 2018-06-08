@@ -13,11 +13,11 @@ if (mysqli_num_rows($_res) > 0) {
     // output data of each row
     while ($row = mysqli_fetch_assoc($_res)) {
         if ($row["t2_stat"] == 0) {
-            $_lists_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"list-{$row["t2_id"]}\"><a href='toListDetails'>{$row["t2_name"]}</a><span><span class=\"mr-5\">{$row["t2_cname"]}</span><span class=\"mr-5\">{$row["t2_fl"]} - {$row["t2_sl"]}</span><i class=\"fas fa-lock-open mr-3 list-activate\"></i><i class=\"fas fa-trash-alt list-delete\"></i></span></li>";
+            $_lists_str .= "<li class=\"list-group-item\" id=\"list-{$row["t2_id"]}\"><div class='row'><div class='col-4'><a href='toListDetails'>{$row["t2_name"]}</a></div><div class='col-3'><span>{$row["t2_cname"]}</span></div><div class='col-3'><span>{$row["t2_fl"]} - {$row["t2_sl"]}</span></div><div class='col-1'><i class=\"fas fa-lock-open mr-3 list-activate\"></i></div><div class='col-1'><i class=\"fas fa-trash-alt list-delete\"></i></div></div></li>";
         } else if ($row["t2_stat"] == 1) {
-            $_lists_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"list-{$row["t2_id"]}\"><a href='toListDetails'>{$row["t2_name"]}</a><span><span class=\"mr-5\">{$row["t2_cname"]}</span><span class=\"mr-5\">{$row["t2_fl"]} - {$row["t2_sl"]}</span><i class=\"fas fa-lock mr-3 list-deactivate\"></i><i class=\"fas fa-trash-alt list-delete\"></i></span></li>";
+            $_lists_str .= "<li class=\"list-group-item\" id=\"list-{$row["t2_id"]}\"><div class='row'><div class='col-4'><a href='toListDetails'>{$row["t2_name"]}</a></div><div class='col-3'><span>{$row["t2_cname"]}</span></div><div class='col-3'><span>{$row["t2_fl"]} - {$row["t2_sl"]}</span></div><div class='col-1'><i class=\"fas fa-lock mr-3 list-deactivate\"></i></div><div class='col-1'><i class=\"fas fa-trash-alt list-delete\"></i></div></div></li>";
         } else {
-            $_lists_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"list-{$row["t2_id"]}\"><a href='toListDetails'>{$row["t2_name"]}</a><span><span class=\"mr-5\">{$row["t2_cname"]}</span><span class=\"mr-5\">{$row["t2_fl"]} - {$row["t2_sl"]}</span><i class=\"fas fa-lock mr-3 list-deactivated\"></i><i class=\"fas fa-trash-alt list-delete\"></i></span></li>";
+            $_lists_str .= "<li class=\"list-group-item\" id=\"list-{$row["t2_id"]}\"><div class='row'><div class='col-4'><a href='toListDetails'>{$row["t2_name"]}</a></div><div class='col-3'><span>{$row["t2_cname"]}</span></div><div class='col-3'><span>{$row["t2_fl"]} - {$row["t2_sl"]}</span></div><div class='col-1'><i class=\"fas fa-lock mr-3 list-deactivated\"></i></div><div class='col-1'><i class=\"fas fa-trash-alt list-delete\"></i></div></div></li>";
         }
     }
 } else {

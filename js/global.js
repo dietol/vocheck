@@ -13,7 +13,7 @@ $( document ).ready(function() {
     });
 
     $('.class-edit').on( "click", function() {
-        var classid = $(this).parent().parent().attr('id');
+        var classid = $(this).parent().parent().parent().attr('id');
         classid = classid.split("-")[1];
         $.ajax({
             method: 'POST',
@@ -27,7 +27,7 @@ $( document ).ready(function() {
 
     $('a[href="toClassDetails"]').on( "click", function(e) {
         e.preventDefault();
-        var classid = $(this).parent().attr('id');
+        var classid = $(this).parent().parent().parent().attr('id');
         classid = classid.split("-")[1];
         $.ajax({
             method: 'POST',
@@ -78,7 +78,7 @@ $( document ).ready(function() {
 
     $('a[href="toListDetails"]').on( "click", function(e) {
         e.preventDefault();
-        var listid = $(this).parent().attr('id');
+        var listid = $(this).parent().parent().parent().attr('id');
         listid = listid.split("-")[1];
         $.ajax({
             method: 'POST',
@@ -161,7 +161,7 @@ $( document ).ready(function() {
 
     $('a[href="toClassStat"]').on( "click", function(e) {
         e.preventDefault();
-        var classid = $(this).parent().attr('id');
+        var classid = $(this).parent().parent().parent().attr('id');
         classid = classid.split("-")[1];
         $.ajax({
             method: 'POST',

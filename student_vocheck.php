@@ -12,7 +12,7 @@ $_lists_str = "";
 if (mysqli_num_rows($_res) > 0) {
     // output data of each row
     while ($row = mysqli_fetch_assoc($_res)) {
-        $_lists_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"list-{$row["t4_id"]}\"><a href='toListVocheck'>{$row["t4_name"]}</a><span><span class=\"mr-5\">{$row["t4_cname"]}</span><span>{$row["t4_fl"]} - {$row["t4_sl"]}</span></span></li>";
+        $_lists_str .= "<li class=\"list-group-item\" id=\"list-{$row["t4_id"]}\"><div class='row'><div class='col-6'><a href='toListVocheck'>{$row["t4_name"]}</a></div><div class='col-3'><span>{$row["t4_cname"]}</span></div><div class='col-3'><span>{$row["t4_fl"]} - {$row["t4_sl"]}</span></div></div></li>";
     }
 } else {
     $_lists_str = "No Lists";

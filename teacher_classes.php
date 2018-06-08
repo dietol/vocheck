@@ -12,7 +12,7 @@ $_classes_str = "";
 if (mysqli_num_rows($_res) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($_res)) {
-        $_classes_str .= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" id=\"class-{$row["d"]}\"><a href='toClassDetails'>{$row["a"]}</a><span><span class=\"mr-5\">{$row["b"]} - {$row["c"]}</span><i class=\"fas fa-pencil-alt mr-3 class-edit\"></i><i class=\"fas fa-trash-alt class-delete\"></i></span></li>";
+        $_classes_str .= "<li class=\"list-group-item\" id=\"class-{$row["d"]}\"><div class='row'><div class='col-6'><a href='toClassDetails'>{$row["a"]}</a></div><div class='col-4'><span>{$row["b"]} - {$row["c"]}</span></div><div class='col-1'><i class=\"fas fa-pencil-alt class-edit\"></i></div><div class='col-1'><i class=\"fas fa-trash-alt class-delete\"></i></div></div></li>";
     }
 } else {
     $_classes_str = "Error";
