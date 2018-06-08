@@ -50,21 +50,23 @@ include('check_teacherlogin.php');
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <h1>vocheck</h1>
-        <h2>Your teacher Account - vocheck Control</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <h1>vocheck</h1>
+            <h2>Your teacher Account - vocheck Control</h2>
 
+        </div>
     </div>
-</div>
 
-<div class="row mt-4">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <div class="card mt-4">
-            <div class="card-body">
-                <ul class="list-group">
-                    <?php echo $_classes_str;?>
-                </ul>
+    <div class="row mt-4">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <?php echo $_classes_str;?>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

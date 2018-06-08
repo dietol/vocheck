@@ -50,37 +50,39 @@ include('check_teacherlogin.php');
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <h1>vocheck</h1>
-        <h2>Your teacher Account - Vocabulary Lists</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <h1>vocheck</h1>
+            <h2>Your teacher Account - Vocabulary Lists</h2>
+        </div>
     </div>
-</div>
 
-<div class="row mb-3">
-    <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-sm-12 col-12">
-        <form method="POST" action="teacher_vocabulary_new.php">
-            <h3>Create new List</h3>
-            <div class="form-group">
-                <label for="classes_new_name">List name</label>
-                <input type="text" class="form-control" id="voclist_new_name" name="voclist_new_name"
-                       placeholder="List name" required>
-            </div>
-            <div class="form-group">
-                <label for="voclist_new_class">Class</label>
-                <select class="form-control" id="voclist_new_class" name="voclist_new_class" required>
-                    <?php echo $_classes_str;?>
-                </select>
-            </div>
-            <div class="form-group text-center">
-                <input type="submit" name="voclist_new_submit" class="btn btn-primary" value="Create List">
-            </div>
-        </form>
-        <form method="POST" action="teacher_vocabulary.php">
-            <div class="form-group text-center">
-                <input type="submit" name="classes_cancel" class="btn btn-secondary" value="Cancel">
-            </div>
-        </form>
+    <div class="row mb-3">
+        <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-sm-12 col-12">
+            <form method="POST" action="teacher_vocabulary_new.php">
+                <h3>Create new List</h3>
+                <div class="form-group">
+                    <label for="classes_new_name">List name</label>
+                    <input type="text" class="form-control" id="voclist_new_name" name="voclist_new_name"
+                           placeholder="List name" required>
+                </div>
+                <div class="form-group">
+                    <label for="voclist_new_class">Class</label>
+                    <select class="form-control" id="voclist_new_class" name="voclist_new_class" required>
+                        <?php echo $_classes_str;?>
+                    </select>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" name="voclist_new_submit" class="btn btn-primary" value="Create List">
+                </div>
+            </form>
+            <form method="POST" action="teacher_vocabulary.php">
+                <div class="form-group text-center">
+                    <input type="submit" name="classes_cancel" class="btn btn-secondary" value="Cancel">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

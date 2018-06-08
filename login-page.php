@@ -40,27 +40,29 @@
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <h1>vocheck</h1>
-        <h2>The new vocabulary checking tool for teachers and pupils</h2>
-        <h2>Login<br></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <h1>vocheck</h1>
+            <h2>The new vocabulary checking tool for teachers and pupils</h2>
+            <h2>Login<br></h2>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-xl-2 offset-xl-5 col-lg-2 offset-lg-5 col-md-4 offset-md-4 col-sm-10 offset-sm-1 col-12">
-        <form method="POST" action="login.php">
-            <br>
-            <div class="form-group">
-                <label for="input_username">Username</label>
-                <input type="text" class="form-control" id="input_username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="input_password">Password</label>
-                <input type="password" class="form-control" id="input_password" name="password" required>
-            </div>
-            <input type="submit" name="submit-login" class="btn btn-primary" value="Login">
-        </form>
+    <div class="row">
+        <div class="col-xl-2 offset-xl-5 col-lg-2 offset-lg-5 col-md-4 offset-md-4 col-sm-10 offset-sm-1 col-12">
+            <form method="POST" action="login.php">
+                <br>
+                <div class="form-group">
+                    <label for="input_username">Username</label>
+                    <input type="text" class="form-control" id="input_username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="input_password">Password</label>
+                    <input type="password" class="form-control" id="input_password" name="password" required>
+                </div>
+                <input type="submit" name="submit-login" class="btn btn-primary" value="Login">
+            </form>
+        </div>
     </div>
 </div>
 

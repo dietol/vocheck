@@ -50,24 +50,26 @@ include('check_teacherlogin.php');
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <h1>vocheck</h1>
-        <h2>Your teacher Account - Add Students in <?php echo $_classname;?></h2>
-    </div>
-</div>
-<div class="row mt-4">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <div class="d-flex justify-content-between align-items-center">
-            <form method="POST" action="teacher_classes.php">
-                <input type="submit" name=class-student-back class="btn btn-secondary" value="Back to Classes"/>
-            </form>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <h1>vocheck</h1>
+            <h2>Your teacher Account - Add Students in <?php echo $_classname;?></h2>
         </div>
-        <div class="card mt-4">
-            <div class="card-body">
-                <ul class="list-group">
-                    <?php echo $_students_str;?>
-                </ul>
+    </div>
+    <div class="row mt-4">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <form method="POST" action="teacher_classes.php">
+                    <input type="submit" name=class-student-back class="btn btn-secondary" value="Back to Classes"/>
+                </form>
+            </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <?php echo $_students_str;?>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

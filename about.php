@@ -40,12 +40,14 @@
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <h1>vocheck</h1>
-        <h2>The new vocabulary checking tool for teachers and pupils</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <h1>vocheck</h1>
+            <h2>The new vocabulary checking tool for teachers and pupils</h2>
 
-        <p>About section</p>
+            <p>About section</p>
+        </div>
     </div>
 </div>
 

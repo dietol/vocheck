@@ -50,26 +50,28 @@ include('check_teacherlogin.php');
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <h1>vocheck</h1>
-        <h2>Your teacher Account - Home</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <h1>vocheck</h1>
+            <h2>Your teacher Account - Home</h2>
 
-        <p>Hello <?php echo $_SESSION["user"]["firstname"];?>!</p>
+            <p>Hello <?php echo $_SESSION["user"]["firstname"];?>!</p>
+        </div>
     </div>
-</div>
 
-<div class="row mb-3">
-    <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
-        <div class="card border-primary">
-            <div class="card-header">Let's start</div>
-            <div class="card-body text-primary">
-                <p>Let's check the learning status of your students!</p>
-                <form method="POST" action="teacher_vControl.php">
-                    <div class="form-group text-center">
-                        <input type="submit" name="vControl_submit" class="btn btn-dark" value="Go to vocheck Control">
-                    </div>
-                </form>
+    <div class="row mb-3">
+        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
+            <div class="card border-primary">
+                <div class="card-header">Let's start</div>
+                <div class="card-body text-primary">
+                    <p>Let's check the learning status of your students!</p>
+                    <form method="POST" action="teacher_vControl.php">
+                        <div class="form-group text-center">
+                            <input type="submit" name="vControl_submit" class="btn btn-dark" value="Go to vocheck Control">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

@@ -75,69 +75,71 @@ if ($_correct != 2) {
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <h1>vocheck</h1>
-        <h2>Your student Account - Let's vocheck</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <h1>vocheck</h1>
+            <h2>Your student Account - Let's vocheck</h2>
 
+        </div>
     </div>
+    <?php if ($_correct == 1) :?>
+        <div class="row mb-3">
+            <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
+                <div class="card border-success">
+                    <div class="card-header">Let's vocheck</div>
+                    <div class="card-body text-success">
+                        <h3>This answer was right!</h3>
+                        <form method="POST" action="student_vocheck_tool.php">
+                            <label for="list_id" hidden >Nothing</label>
+                            <input type ="text" name ="lid" id ="list_id"  value ="<?php echo $_lid;?>" hidden />
+                            <div class="form-group text-center">
+                                <input type="submit" name="vocheck_tool_submit" class="btn btn-success" value="Continue">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php elseif ($_correct == 0) : ?>
+        <div class="row mb-3">
+            <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
+                <div class="card border-danger">
+                    <div class="card-header">Let's vocheck</div>
+                    <div class="card-body text-danger">
+                        <h3>This answer was wrong!</h3>
+                        <p>The correct answer was:</p>
+                        <h5><?php echo $_voc_fl.": ".$_voc_mfl?></h5>
+                        <h5><?php echo $_voc_sl.": ".$_voc_msl?></h5>
+                        <form method="POST" action="student_vocheck_tool.php">
+                            <label for="list_id" hidden >Nothing</label>
+                            <input type ="text" name ="lid" id ="list_id"  value ="<?php echo $_lid;?>" hidden />
+                            <div class="form-group text-center">
+                                <input type="submit" name="vocheck_tool_submit" class="btn btn-danger" value="Continue">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php else : ?>
+        <div class="row mb-3">
+            <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
+                <div class="card border-success">
+                    <div class="card-header">Let's vocheck</div>
+                    <div class="card-body text-success">
+                        <h3>You finished all vocabularies! Great job!</h3>
+                        <form method="POST" action="student_vocheck.php">
+                            <div class="form-group text-center">
+                                <input type="submit" name="vocheck_tool_submit" class="btn btn-success" value="Finish">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>
-<?php if ($_correct == 1) :?>
-    <div class="row mb-3">
-        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
-            <div class="card border-success">
-                <div class="card-header">Let's vocheck</div>
-                <div class="card-body text-success">
-                    <h3>This answer was right!</h3>
-                    <form method="POST" action="student_vocheck_tool.php">
-                        <label for="list_id" hidden >Nothing</label>
-                        <input type ="text" name ="lid" id ="list_id"  value ="<?php echo $_lid;?>" hidden />
-                        <div class="form-group text-center">
-                            <input type="submit" name="vocheck_tool_submit" class="btn btn-success" value="Continue">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php elseif ($_correct == 0) : ?>
-    <div class="row mb-3">
-        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
-            <div class="card border-danger">
-                <div class="card-header">Let's vocheck</div>
-                <div class="card-body text-danger">
-                    <h3>This answer was wrong!</h3>
-                    <p>The correct answer was:</p>
-                    <h5><?php echo $_voc_fl.": ".$_voc_mfl?></h5>
-                    <h5><?php echo $_voc_sl.": ".$_voc_msl?></h5>
-                    <form method="POST" action="student_vocheck_tool.php">
-                        <label for="list_id" hidden >Nothing</label>
-                        <input type ="text" name ="lid" id ="list_id"  value ="<?php echo $_lid;?>" hidden />
-                        <div class="form-group text-center">
-                            <input type="submit" name="vocheck_tool_submit" class="btn btn-danger" value="Continue">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php else : ?>
-    <div class="row mb-3">
-        <div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-12">
-            <div class="card border-success">
-                <div class="card-header">Let's vocheck</div>
-                <div class="card-body text-success">
-                    <h3>You finished all vocabularies! Great job!</h3>
-                    <form method="POST" action="student_vocheck.php">
-                        <div class="form-group text-center">
-                            <input type="submit" name="vocheck_tool_submit" class="btn btn-success" value="Finish">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
 
 </body>
 </html>

@@ -50,46 +50,48 @@ include('check_teacherlogin.php');
     </div>
 </nav>
 
-<div class="row">
-    <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-        <h1>vocheck</h1>
-        <h2>Your teacher Account - Classes</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <h1>vocheck</h1>
+            <h2>Your teacher Account - Classes</h2>
+        </div>
     </div>
-</div>
 
-<div class="row mb-3">
-    <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-sm-12 col-12">
-        <form method="POST" action="teacher_classes_edit.php">
-            <h3>Edit class</h3>
-            <div class="form-group">
-                <label for="classes_edit_name">Class name</label>
-                <input type="text" class="form-control" id="classes_edit_name" name="classes_edit_name"
-                       value="<?php echo $_entry["name"];?>" required>
-            </div>
-            <div class="form-group">
-                <label for="classes_edit_language_first">Mother Language</label>
-                <select class="form-control" id="classes_edit_language_first" name="classes_edit_language_first" required>
-                    <?php echo $_language_str_1;?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="classes_edit_language_second">Foreign Language</label>
-                <select class="form-control" id="classes_edit_language_second" name="classes_edit_language_second" required>
-                    <?php echo $_language_str_2;?>
-                </select>
-            </div>
-            <label for="classes_edit_id" hidden>Nothing</label>
-            <input type="text" class="form-control" id="classes_edit_id" name="classes_edit_id"
-                   value="<?php echo $_entry["id"];?>" hidden>
-            <div class="form-group text-center">
-                <input type="submit" name="classes_edit_submit" class="btn btn-primary" value="Update Class">
-            </div>
-        </form>
-        <form method="POST" action="teacher_classes.php">
-            <div class="form-group text-center">
-                <input type="submit" name="classes_cancel" class="btn btn-secondary" value="Cancel">
-            </div>
-        </form>
+    <div class="row mb-3">
+        <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-8 offset-md-2 col-sm-12 col-12">
+            <form method="POST" action="teacher_classes_edit.php">
+                <h3>Edit class</h3>
+                <div class="form-group">
+                    <label for="classes_edit_name">Class name</label>
+                    <input type="text" class="form-control" id="classes_edit_name" name="classes_edit_name"
+                           value="<?php echo $_entry["name"];?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="classes_edit_language_first">Mother Language</label>
+                    <select class="form-control" id="classes_edit_language_first" name="classes_edit_language_first" required>
+                        <?php echo $_language_str_1;?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="classes_edit_language_second">Foreign Language</label>
+                    <select class="form-control" id="classes_edit_language_second" name="classes_edit_language_second" required>
+                        <?php echo $_language_str_2;?>
+                    </select>
+                </div>
+                <label for="classes_edit_id" hidden>Nothing</label>
+                <input type="text" class="form-control" id="classes_edit_id" name="classes_edit_id"
+                       value="<?php echo $_entry["id"];?>" hidden>
+                <div class="form-group text-center">
+                    <input type="submit" name="classes_edit_submit" class="btn btn-primary" value="Update Class">
+                </div>
+            </form>
+            <form method="POST" action="teacher_classes.php">
+                <div class="form-group text-center">
+                    <input type="submit" name="classes_cancel" class="btn btn-secondary" value="Cancel">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
