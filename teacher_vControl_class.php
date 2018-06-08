@@ -80,7 +80,7 @@ if (count($lists) > 0) {
 
         if (mysqli_num_rows($_res) == 1) {
             $row = mysqli_fetch_assoc($_res);
-            if ($row["status"] == 1) {
+            if ($row["status"] != 2) {
                 $_list_class = "list_activated";
             } else {
                 $_list_class = "list_deactivated";
