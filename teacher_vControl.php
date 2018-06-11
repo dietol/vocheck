@@ -15,7 +15,7 @@ if (mysqli_num_rows($_res) > 0) {
         $_classes_str .= "<li class=\"list-group-item\" id=\"class-{$row["id"]}\"><div class='row'><div class='col-8'><a href='toClassStat'>{$row["classname"]}</a></div><div class='col-4'><span class=\"mr-5\">{$row["fl"]} - {$row["sl"]}</span></div></div></li>";
     }
 } else {
-    $_classes_str = "Error";
+    $_classes_str = "No Classes";
 }
 
 mysqli_close($conn);
