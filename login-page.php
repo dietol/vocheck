@@ -56,6 +56,13 @@
     </div>
     <div class="row">
         <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-10 offset-sm-1 col-12">
+            <?php if ($_pw_incorrect == 1) :?>
+                <p class="text-danger">The login data is not correct. Try again!</p>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-10 offset-sm-1 col-12">
             <form method="POST" action="login.php">
                 <div class="form-group">
                     <label for="input_username">Username</label>

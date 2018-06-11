@@ -2,6 +2,8 @@
 
 include("static/connect-database.php");
 
+$_pw_incorrect = 0;
+
 // Login-button pressed -> check login data
 if (!empty($_POST["submit-login"])) {
 
@@ -47,6 +49,8 @@ if (!empty($_POST["submit-login"])) {
     }
     else {
         $_SESSION["login"] = 0;
+        $_pw_incorrect = 1;
+
     }
 }
 
