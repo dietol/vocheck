@@ -1,9 +1,9 @@
 <?php
 //$_db_host = "localhost";
-$_db_host = "***REMOVED***";
-$_db_database = "***REMOVED***";
-$_db_username = "u01_***REMOVED***";
-$_db_password = "***REMOVED***";
+$_db_host = "";
+$_db_database = "";
+$_db_username = "";
+$_db_password = "";
 
 SESSION_START();
 
